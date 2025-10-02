@@ -10,12 +10,16 @@
 <body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans" data-page="about">
 
   <!-- Navbar -->
-  <nav class="flex items-center justify-between px-8 py-4 bg-black/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800">
+  <nav class="flex items-center justify-between px-4 sm:px-8 py-4 bg-black/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800">
     <div class="flex items-center space-x-3">
-      <img src="wallpaper.png" alt="Smaz Logo" class="w-10 h-10 rounded">
-      <h2 class="text-2xl font-extrabold tracking-wide text-blue-500">Smaz</h2>
+      <img src="wallpaper.png" alt="Smaz Logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded">
+      <h2 class="text-xl sm:text-2xl font-extrabold tracking-wide text-blue-500">Smaz</h2>
     </div>
-    <ul class="flex space-x-6 text-gray-300 font-medium">
+    <!-- Mobile menu button -->
+    <div class="md:hidden">
+      <button id="menu-btn" class="text-gray-300 text-2xl focus:outline-none">☰</button>
+    </div>
+    <ul id="menu" class="hidden md:flex space-x-4 sm:space-x-6 text-gray-300 font-medium">
       <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
       <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
       <li><a href="features.html" class="nav-link" data-page="features">Features</a></li>
@@ -24,12 +28,25 @@
       <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
       <li><a href="privacy.html" class="nav-link" data-page="privacy">Privacy</a></li>
       <li>
-        <a href="lina.html" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold transition">
+        <a href="lina.html" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold transition block text-center">
           Explore Lina
         </a>
       </li>
     </ul>
   </nav>
+
+  <!-- Mobile menu toggle -->
+  <script>
+    const btn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("flex");
+      menu.classList.toggle("flex-col");
+      menu.classList.toggle("space-y-4");
+      menu.classList.add("mt-4","md:mt-0");
+    });
+  </script>
 
   <!-- Active Link Script -->
   <script>
@@ -37,18 +54,16 @@
     document.querySelectorAll('.nav-link').forEach(link => {
       if(link.dataset.page === activePage){
         link.classList.add('text-blue-500', 'font-semibold');
-      } else {
-        link.classList.remove('text-blue-500', 'font-semibold');
       }
     });
   </script>
 
   <!-- Hero / About Intro -->
-  <header class="flex flex-col items-center justify-center text-center px-6 py-24 bg-gradient-to-r from-gray-900 to-black">
-    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 text-white">
+  <header class="flex flex-col items-center justify-center text-center px-4 sm:px-6 py-16 sm:py-24 bg-gradient-to-r from-gray-900 to-black">
+    <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-6 text-white leading-tight">
       About <span class="text-blue-500">Smaz</span>
     </h1>
-    <p class="max-w-3xl text-lg leading-relaxed text-gray-300">
+    <p class="max-w-3xl text-base sm:text-lg leading-relaxed text-gray-300">
       <strong>Smaz</strong> is a <span class="text-blue-400">next-generation technology brand</span> focused on building
       smart, connected, and futuristic digital products. Our mission is to merge
       <strong>AI, social, and lifestyle apps</strong> into one seamless ecosystem – starting with
@@ -57,19 +72,19 @@
   </header>
 
   <!-- Mission & Vision -->
-  <section class="py-20 px-6">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+  <section class="py-16 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto grid gap-10 md:grid-cols-2 items-start">
       <div>
-        <h2 class="text-4xl font-bold text-white mb-6">Our Mission</h2>
-        <p class="text-gray-400 leading-relaxed">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6">Our Mission</h2>
+        <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
           At Smaz, our mission is simple: to create <span class="text-blue-400">technology that feels human</span>.
           We build apps that understand your needs, connect your world, and make everyday life
           smarter and easier.
         </p>
       </div>
       <div>
-        <h2 class="text-4xl font-bold text-white mb-6">Our Vision</h2>
-        <p class="text-gray-400 leading-relaxed">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6">Our Vision</h2>
+        <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
           We envision a future where <strong>AI and social apps work together</strong> – making communication effortless,
           entertainment limitless, and productivity natural. Smaz is the platform that powers this future.
         </p>
@@ -78,49 +93,49 @@
   </section>
 
   <!-- Brand Story -->
-  <section class="py-20 bg-gradient-to-r from-gray-950 to-black px-6">
+  <section class="py-16 sm:py-20 bg-gradient-to-r from-gray-950 to-black px-4 sm:px-6">
     <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-4xl font-bold text-white mb-8">Our Story</h2>
-      <p class="text-gray-400 leading-relaxed mb-6">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6 sm:mb-8">Our Story</h2>
+      <p class="text-gray-400 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
         Founded in 2025, Smaz was born with a single idea – to build
         <span class="text-blue-400">a smarter digital experience</span>.
         From the very beginning, our focus has been on combining
         <strong>AI-powered assistance</strong> with <strong>social interactions</strong> in a way that no app
         had ever done before.
       </p>
-      <p class="text-gray-400 leading-relaxed">
-        Our first product, <strong>Lina</strong>, is proof of this vision. But Smaz is more than one app –
+      <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
+        Our first product, <strong>Lina</strong>, is proof of this vision. But Smaz is more than one app – 
         it’s a growing ecosystem of technology designed for the future.
       </p>
     </div>
   </section>
 
   <!-- Core Values -->
-  <section class="py-20 px-6">
+  <section class="py-16 sm:py-20 px-4 sm:px-6">
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-4xl font-bold text-white mb-12">Our Core Values</h2>
-      <div class="grid md:grid-cols-3 gap-10">
-        <div class="p-8 rounded-xl bg-gray-900/60 border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
-          <h3 class="text-xl font-semibold mb-3 text-blue-400">Innovation</h3>
-          <p class="text-gray-400">We push boundaries by integrating AI, design, and technology into every product we create.</p>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-8 sm:mb-12">Our Core Values</h2>
+      <div class="grid gap-6 sm:gap-10 md:grid-cols-3">
+        <div class="p-6 sm:p-8 rounded-xl bg-gray-900/60 border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3 text-blue-400">Innovation</h3>
+          <p class="text-gray-400 text-sm sm:text-base">We push boundaries by integrating AI, design, and technology into every product we create.</p>
         </div>
-        <div class="p-8 rounded-xl bg-gray-900/60 border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
-          <h3 class="text-xl font-semibold mb-3 text-blue-400">Trust</h3>
-          <p class="text-gray-400">Privacy, transparency, and user trust are at the heart of everything we build.</p>
+        <div class="p-6 sm:p-8 rounded-xl bg-gray-900/60 border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3 text-blue-400">Trust</h3>
+          <p class="text-gray-400 text-sm sm:text-base">Privacy, transparency, and user trust are at the heart of everything we build.</p>
         </div>
-        <div class="p-8 rounded-xl bg-gray-900/60 border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
-          <h3 class="text-xl font-semibold mb-3 text-blue-400">Future-Ready</h3>
-          <p class="text-gray-400">We design apps that evolve and scale for tomorrow’s digital world.</p>
+        <div class="p-6 sm:p-8 rounded-xl bg-gray-900/60 border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
+          <h3 class="text-lg sm:text-xl font-semibold mb-3 text-blue-400">Future-Ready</h3>
+          <p class="text-gray-400 text-sm sm:text-base">We design apps that evolve and scale for tomorrow’s digital world.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black text-gray-400 py-10 border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-      <p>&copy; 2025 Smaz. All rights reserved.</p>
-      <ul class="flex space-x-6 mt-4 md:mt-0">
+  <footer class="bg-black text-gray-400 py-8 sm:py-10 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm sm:text-base">&copy; 2025 Smaz. All rights reserved.</p>
+      <ul class="flex flex-wrap justify-center md:justify-end space-x-4 sm:space-x-6 mt-4 md:mt-0 text-sm sm:text-base">
         <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
         <li><a href="terms.html" class="hover:text-white">Terms of Service</a></li>
         <li><a href="contact.html" class="hover:text-white">Contact</a></li>
