@@ -10,8 +10,12 @@
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Smaz is building the future of AI-powered apps. Explore Lina – our all-in-one super app with chat, reels, stories, and more.">
-  <meta name="keywords" content="Smaz, Lina, AI App, Chat App, Super App, Reels, Stories, AI Assistant, Innovation">
+  <meta name="keywords" content="Smaz, Lina, AI App, Chat App, Super App, Reels, Stories, AI Assistant, Innovation, Digital Experience">
   <meta name="author" content="Smaz Official">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://smazweb.site/">
 
   <!-- Favicon / Website Logo -->
   <link rel="icon" type="image/png" href="wallpaper.png">
@@ -31,20 +35,38 @@
   <meta name="twitter:description" content="Explore Lina – our all-in-one AI-powered assistant app with chat, reels, stories, and more.">
   <meta name="twitter:image" content="https://smazweb.site/wallpaper.png">
 
+  <!-- Structured Data (Schema.org JSON-LD for Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Smaz",
+    "url": "https://smazweb.site",
+    "logo": "https://smazweb.site/wallpaper.png",
+    "description": "Smaz is building the future of AI-powered apps like Lina – an all-in-one assistant app with chat, reels, stories, and more.",
+    "founder": "Smaz Official",
+    "sameAs": [
+      "https://twitter.com/",
+      "https://www.linkedin.com/",
+      "https://facebook.com/"
+    ]
+  }
+  </script>
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans" data-page="home">
 
   <!-- Navbar -->
-  <nav class="flex items-center justify-between px-4 sm:px-8 py-4 bg-black/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800">
+  <nav class="flex items-center justify-between px-4 sm:px-8 py-4 bg-black/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800" aria-label="Main Navigation">
     <div class="flex items-center space-x-3">
       <img src="wallpaper.png" alt="Smaz Logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded">
       <h2 class="text-xl sm:text-2xl font-extrabold tracking-wide text-blue-500">Smaz</h2>
     </div>
     <!-- Mobile menu (hamburger) -->
     <div class="md:hidden">
-      <button id="menu-btn" class="text-gray-300 focus:outline-none">
+      <button id="menu-btn" aria-label="Toggle Menu" class="text-gray-300 focus:outline-none">
         ☰
       </button>
     </div>
@@ -133,7 +155,7 @@
   <!-- Footer -->
   <footer class="bg-black text-gray-400 py-8 sm:py-10 border-t border-gray-800">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center">
-      <p class="text-sm sm:text-base">&copy; 2025 Smaz. All rights reserved.</p>
+      <p class="text-sm sm:text-base">&copy; <span id="year"></span> Smaz. All rights reserved.</p>
       <ul class="flex flex-wrap justify-center md:justify-end space-x-4 sm:space-x-6 mt-4 md:mt-0 text-sm sm:text-base">
         <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
         <li><a href="terms.html" class="hover:text-white">Terms of Service</a></li>
@@ -142,6 +164,11 @@
       </ul>
     </div>
   </footer>
+
+  <!-- Auto Year Script -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
