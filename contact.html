@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – Smaz</title>
+  <meta name="description" content="Get in touch with Smaz – for support, business inquiries, or partnerships. Contact us via email, form, or social links.">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans" data-page="contact">
+
+  <!-- Navbar -->
+  <nav class="flex items-center justify-between px-8 py-4 bg-black/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800">
+    <div class="flex items-center space-x-3">
+      <img src="wallpaper.png" alt="Smaz Logo" class="w-10 h-10 rounded">
+      <h2 class="text-2xl font-extrabold tracking-wide text-blue-500">Smaz</h2>
+    </div>
+    <ul class="flex space-x-6 text-gray-300 font-medium">
+      <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
+      <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
+      <li><a href="features.html" class="nav-link" data-page="features">Features</a></li>
+      <li><a href="portfolio.html" class="nav-link" data-page="portfolio">Portfolio</a></li>
+      <li><a href="blog.html" class="nav-link" data-page="blog">Blog</a></li>
+      <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
+      <li><a href="privacy.html" class="nav-link" data-page="privacy">Privacy</a></li>
+      <li>
+        <a href="lina.html" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold transition">
+          Explore Lina
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Active Link Script -->
+  <script>
+    const activePage = document.body.getAttribute('data-page');
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if(link.dataset.page === activePage){
+        link.classList.add('text-blue-500', 'font-semibold');
+      } else {
+        link.classList.remove('text-blue-500', 'font-semibold');
+      }
+    });
+  </script>
+
+  <!-- Contact Header -->
+  <header class="text-center py-20">
+    <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">Get in Touch</h1>
+    <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+      Have questions, feedback, or partnership inquiries?  
+      We’d love to hear from you – let’s connect.
+    </p>
+  </header>
+
+  <!-- Contact Form -->
+  <section class="max-w-3xl mx-auto px-6 py-12 bg-gray-900/70 rounded-xl shadow-lg border border-gray-800">
+    <form action="https://formspree.io/f/mjkarogv" method="POST" class="space-y-6"> 
+      <div>
+        <label class="block text-gray-300 mb-2">Name</label>
+        <input type="text" name="name" class="w-full px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" required>
+      </div>
+      <div>
+        <label class="block text-gray-300 mb-2">Email</label>
+        <input type="email" name="email" class="w-full px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" required>
+      </div>
+      <div>
+        <label class="block text-gray-300 mb-2">Message</label>
+        <textarea name="message" rows="5" class="w-full px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" required></textarea>
+      </div>
+      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 transition text-white font-bold py-3 rounded-lg">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Contact Info -->
+  <section class="text-center py-16 space-y-4">
+    <p>Email: <a href="mailto:info@smazweb.site" class="text-blue-400 hover:underline">info@smazweb.site</a></p>
+    <p>Follow us: 
+      <a href="https://wa.me/923293642275" target="_blank" class="text-blue-400 mx-2 hover:underline">WhatsApp (+92 329 3642275)</a>
+    </p>
+    <p class="text-gray-500 text-sm">Need quick help? Visit our <a href="faq.html" class="text-blue-400 hover:underline">FAQ</a>.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-gray-400 py-10 border-t border-gray-800 text-center">
+    <p>&copy; 2025 Smaz. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

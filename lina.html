@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lina – Powered by Smaz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans" data-page="lina">
+
+  <!-- Navbar -->
+  <nav class="flex items-center justify-between px-8 py-4 bg-black/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800">
+    <div class="flex items-center space-x-3">
+      <img src="icon.png" alt="Lina Logo" class="w-10 h-10 rounded">
+      <h2 class="text-2xl font-extrabold tracking-wide text-blue-500">Lina</h2>
+    </div>
+    <ul class="flex space-x-6 text-gray-300 font-medium">
+      <li><a href="index.html" class="nav-link" data-page="home">Back to Smaz</a></li>
+      <li><a href="#features" class="nav-link" data-page="features">Features</a></li>
+      <li><a href="#download" class="nav-link" data-page="download">Download</a></li>
+      <li><a href="#faq" class="nav-link" data-page="faq">FAQ</a></li>
+      <li><a href="contact.html" class="nav-link" data-page="contact">Support</a></li>
+    </ul>
+  </nav>
+
+  <!-- Active Link Script -->
+  <script>
+    const activePage = document.body.getAttribute('data-page');
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if(link.dataset.page === activePage){
+        link.classList.add('text-blue-500', 'font-semibold');
+      } else {
+        link.classList.remove('text-blue-500', 'font-semibold');
+      }
+    });
+  </script>
+
+  <!-- Hero Section -->
+  <header class="flex flex-col items-center justify-center text-center px-6 py-28 bg-gradient-to-r from-gray-900 to-black">
+    <img src="icon.png" alt="Lina Logo" class="w-28 h-28 mb-6 drop-shadow-lg">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 text-white">Meet <span class="text-blue-500">Lina</span></h1>
+    <p class="max-w-3xl text-lg leading-relaxed mb-8 text-gray-300">
+      <strong>Lina</strong> is your smart personal assistant app powered by Smaz – connecting  
+      <span class="text-blue-400">Home feed, AI, Chat, Reels, Stories, and Profile</span> into one futuristic experience.
+    </p>
+    <a href="#download" class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-500 transition">
+      Download Lina App
+    </a>
+  </header>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-4xl font-bold text-white mb-12">Lina Features</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="p-8 rounded-xl bg-gray-900/60 border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
+          <h3 class="text-xl font-semibold mb-3 text-blue-400">Home Feed</h3>
+          <p class="text-gray-400">Unlimited scrolling feed for news, posts, and updates.</p>
+        </div>
+        <div class="p-8 rounded-xl bg-gray-900/60 border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
+          <h3 class="text-xl font-semibold mb-3 text-blue-400">AI Assistant</h3>
+          <p class="text-gray-400">Voice-controlled smart assistant for commands & automation.</p>
+        </div>
+        <div class="p-8 rounded-xl bg-gray-900/60 border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
+          <h3 class="text-xl font-semibold mb-3 text-blue-400">Chat</h3>
+          <p class="text-gray-400">Fast, secure, and intuitive messaging with your friends.</p>
+        </div>
+        <div class="p-8 rounded-xl bg-gray-900/60 border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
+          <h3 class="text-xl font-semibold mb-3 text-blue-400">Reels</h3>
+          <p class="text-gray-400">Create, watch, and share trending short videos.</p>
+        </div>
+        <div class="p-8 rounded-xl bg-gray-900/60 border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
+          <h3 class="text-xl font-semibold mb-3 text-blue-400">Stories</h3>
+          <p class="text-gray-400">Share your moments with beautiful story updates.</p>
+        </div>
+        <div class="p-8 rounded-xl bg-gray-900/60 border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
+          <h3 class="text-xl font-semibold mb-3 text-blue-400">Profile & Settings</h3>
+          <p class="text-gray-400">Personalize your experience with profile customization.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section id="download" class="py-20 px-6 text-center">
+    <h2 class="text-4xl font-bold text-white mb-6">Download Lina</h2>
+    <p class="text-gray-400 mb-8">Available soon on all major platforms.</p>
+    <div class="flex flex-wrap gap-6 justify-center">
+      <a href="#" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-500 transition">
+        Download APK
+      </a>
+      <a href="#" class="px-6 py-3 bg-gray-800 border border-gray-700 text-gray-200 font-semibold rounded-lg hover:border-blue-500 transition">
+        Google Play (Coming Soon)
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20 bg-gray-900/50 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold text-center text-white mb-12">FAQ</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-lg font-semibold text-blue-400">Is Lina free to use?</h3>
+          <p class="text-gray-400">Yes! Lina is free to download and use. Premium features may come later.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-blue-400">Which devices support Lina?</h3>
+          <p class="text-gray-400">Lina supports Android initially, with iOS and web versions planned.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-blue-400">Does Lina work offline?</h3>
+          <p class="text-gray-400">Some features like feed and reels require internet, but chat and profile work offline.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-gray-400 py-10 border-t border-gray-800 text-center">
+    <p>&copy; 2025 Lina. Powered by <a href="index.html" class="text-blue-400 hover:underline">Smaz</a>.</p>
+  </footer>
+
+</body>
+</html>
