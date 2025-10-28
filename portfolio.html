@@ -1,142 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Favicon / Website Logo -->
-<link rel="icon" type="image/png" href="wallpaper.png">
-<link rel="apple-touch-icon" href="wallpaper.png">
-<link rel="icon" sizes="192x192" href="wallpaper.png">
-
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio – Smaz & Lina</title>
-  <meta name="description" content="Explore the portfolio of Smaz – starting with Lina, our first AI-powered super app combining chat, stories, reels, and more. Discover our future projects and vision.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio – Smaz Creative Works</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="wallpaper.png">
+  <link rel="apple-touch-icon" href="wallpaper.png">
+
+  <!-- Tailwind & AOS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(to right, #3b82f6, #60a5fa, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glass Card with Blue Glow */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass::after {
+      content: "";
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, rgba(37,99,235,0.6) 0%, transparent 70%);
+      transition: all 0.4s ease;
+      z-index: 0;
+    }
+
+    .glass:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(59,130,246,0.3);
+    }
+
+    .glass:hover::after {
+      width: 250%;
+      height: 250%;
+      bottom: -20%;
+    }
+
+    /* Navbar Links */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link.active {
+      color: #3b82f6;
+      font-weight: 600;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background-color: #3b82f6;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+  </style>
 </head>
+
 <body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans" data-page="portfolio">
 
   <!-- Navbar -->
-  <nav class="flex items-center justify-between px-6 py-4 bg-black/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800">
-    <!-- Logo -->
+  <nav class="flex items-center justify-between px-6 sm:px-10 py-4 bg-black/70 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-800">
     <div class="flex items-center space-x-3">
       <img src="wallpaper.png" alt="Smaz Logo" class="w-10 h-10 rounded">
-      <h2 class="text-2xl font-extrabold tracking-wide text-blue-500">Smaz</h2>
+      <h2 class="text-2xl font-extrabold text-blue-500 tracking-wide">Smaz</h2>
     </div>
-
-    <!-- Desktop Menu -->
-    <ul class="hidden md:flex space-x-6 text-gray-300 font-medium">
-      <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
-      <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
-      <li><a href="features.html" class="nav-link" data-page="features">Features</a></li>
-      <li><a href="portfolio.html" class="nav-link" data-page="portfolio">Portfolio</a></li>
-      <li><a href="blog.html" class="nav-link" data-page="blog">Blog</a></li>
-      <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
-      <li><a href="privacy.html" class="nav-link" data-page="privacy">Privacy</a></li>
+    <ul class="hidden md:flex space-x-8 text-gray-300 font-medium">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
       <li>
-        <a href="lina.html" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold transition">
-          Explore Lina
-        </a>
+        <a href="lina.html" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white transition">Lina Project</a>
       </li>
     </ul>
-
-    <!-- Mobile Menu Button -->
-    <button id="menu-btn" class="md:hidden text-gray-300 focus:outline-none text-2xl">
-      ☰
-    </button>
   </nav>
 
-  <!-- Mobile Dropdown -->
-  <div id="mobile-menu" class="hidden md:hidden bg-black/90 border-t border-gray-800 px-6 py-4 space-y-4">
-    <a href="index.html" class="block nav-link" data-page="home">Home</a>
-    <a href="about.html" class="block nav-link" data-page="about">About</a>
-    <a href="features.html" class="block nav-link" data-page="features">Features</a>
-    <a href="portfolio.html" class="block nav-link" data-page="portfolio">Portfolio</a>
-    <a href="blog.html" class="block nav-link" data-page="blog">Blog</a>
-    <a href="contact.html" class="block nav-link" data-page="contact">Contact</a>
-    <a href="privacy.html" class="block nav-link" data-page="privacy">Privacy</a>
-    <a href="lina.html" class="block bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold px-4 py-2 transition">
-      Explore Lina
-    </a>
-  </div>
-
-  <!-- Active Link Script -->
-  <script>
-    const activePage = document.body.getAttribute('data-page');
-    document.querySelectorAll('.nav-link').forEach(link => {
-      if(link.dataset.page === activePage){
-        link.classList.add('text-blue-500', 'font-semibold');
-      } else {
-        link.classList.remove('text-blue-500', 'font-semibold');
-      }
-    });
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
-
-  <!-- Hero -->
-  <header class="flex flex-col items-center justify-center text-center px-6 py-16 md:py-24 bg-gradient-to-r from-gray-900 to-black">
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 text-white">Our <span class="text-blue-500">Portfolio</span></h1>
-    <p class="max-w-3xl text-base md:text-lg leading-relaxed text-gray-300">
-      Discover the work of <span class="text-blue-400">Smaz</span>.  
-      Our first milestone is <strong>Lina</strong> – an AI-powered social experience that connects people and technology.
+  <!-- Hero Section -->
+  <header class="text-center px-6 py-24 bg-gradient-to-br from-gray-900 to-black">
+    <h1 data-aos="fade-up" class="text-5xl font-extrabold mb-4 text-white">
+      Our <span class="gradient-text">Portfolio</span>
+    </h1>
+    <p data-aos="fade-up" data-aos-delay="200" class="max-w-2xl mx-auto text-gray-400 text-lg leading-relaxed">
+      Explore the creative journey of <span class="text-blue-400 font-semibold">Smaz</span> — from stunning app designs like <strong>Lina</strong> to complete branding for <strong>Crust & Crums</strong>.
     </p>
   </header>
 
-  <!-- Lina Project Showcase -->
-  <section class="py-16 md:py-20 px-6">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Our First Project – Lina</h2>
-      <p class="max-w-2xl mx-auto text-gray-400 mb-10 md:mb-12">
-        Lina is the first project by Smaz, designed to merge AI, communication, and entertainment into one futuristic app.
-      </p>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <img src="6.jpg" alt="Lina App Home Screen" class="rounded-xl shadow-lg border border-gray-800 hover:scale-105 transition-transform duration-300">
-        <img src="6.jpg" alt="Lina App AI Screen" class="rounded-xl shadow-lg border border-gray-800 hover:scale-105 transition-transform duration-300">
-        <img src="7.jpg" alt="Lina App Chat Screen" class="rounded-xl shadow-lg border border-gray-800 hover:scale-105 transition-transform duration-300">
-        <img src="8.jpg" alt="Lina App Stories Screen" class="rounded-xl shadow-lg border border-gray-800 hover:scale-105 transition-transform duration-300">
-        <img src="9.jpg" alt="Lina App Reels Screen" class="rounded-xl shadow-lg border border-gray-800 hover:scale-105 transition-transform duration-300">
-        <img src="10.jpg" alt="Lina App Settings Screen" class="rounded-xl shadow-lg border border-gray-800 hover:scale-105 transition-transform duration-300">
+  <!-- Portfolio Cards -->
+  <section class="py-20 px-6">
+    <div class="max-w-6xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      
+      <!-- Lina App -->
+      <div data-aos="zoom-in" data-aos-delay="100" class="p-6 rounded-xl glass relative">
+        <img src="6.jpg" alt="Lina App" class="rounded-lg mb-4 relative z-10">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2 relative z-10">Lina App</h2>
+        <p class="text-gray-400 relative z-10">An AI-powered super app combining chat, stories, and digital creativity in one platform.</p>
       </div>
+
+      <!-- Crust & Crums -->
+      <div data-aos="zoom-in" data-aos-delay="200" class="p-6 rounded-xl glass relative">
+        <img src="crust.jpg" alt="Crust & Crums" class="rounded-lg mb-4 relative z-10">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2 relative z-10">Crust & Crums</h2>
+        <p class="text-gray-400 relative z-10">Restaurant brand identity and website — crafted for elegance and visual appeal.</p>
+      </div>
+
+      <!-- Poster Designs -->
+      <div data-aos="zoom-in" data-aos-delay="300" class="p-6 rounded-xl glass relative">
+        <img src="poster.jpg" alt="Graphic Posters" class="rounded-lg mb-4 relative z-10">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2 relative z-10">Poster Design</h2>
+        <p class="text-gray-400 relative z-10">Eye-catching digital posters that showcase modern design principles and branding.</p>
+      </div>
+
+      <!-- Smaz Web -->
+      <div data-aos="zoom-in" data-aos-delay="400" class="p-6 rounded-xl glass relative">
+        <img src="smazweb.jpg" alt="Smaz Website" class="rounded-lg mb-4 relative z-10">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2 relative z-10">Smaz Website</h2>
+        <p class="text-gray-400 relative z-10">Our own creative studio’s website built with modern web technology and sleek visuals.</p>
+      </div>
+
+      <!-- Branding -->
+      <div data-aos="zoom-in" data-aos-delay="500" class="p-6 rounded-xl glass relative">
+        <img src="brand.jpg" alt="Brand Design" class="rounded-lg mb-4 relative z-10">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2 relative z-10">Branding & Visuals</h2>
+        <p class="text-gray-400 relative z-10">Professional branding, logos, and color systems designed to make brands unforgettable.</p>
+      </div>
+
+      <!-- Future Concept -->
+      <div data-aos="zoom-in" data-aos-delay="600" class="p-6 rounded-xl glass relative">
+        <img src="future.jpg" alt="Future Projects" class="rounded-lg mb-4 relative z-10">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2 relative z-10">Future Projects</h2>
+        <p class="text-gray-400 relative z-10">Upcoming ventures including AI-based platforms and creative ecosystems by Smaz.</p>
+      </div>
+
     </div>
   </section>
 
-  <!-- Brand Vision -->
-  <section class="py-16 md:py-20 bg-gradient-to-r from-gray-950 to-black px-6">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Our Vision</h2>
-      <p class="text-gray-400 mb-6 text-base md:text-lg">
-        At <strong>Smaz</strong>, we aim to build products that are not just apps, but experiences.  
-        Lina is just the beginning of a journey towards a connected digital ecosystem powered by AI and innovation.
-      </p>
-    </div>
-  </section>
-
-  <!-- Coming Soon -->
-  <section class="py-16 md:py-20 px-6">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Future Projects</h2>
-      <p class="text-gray-400 mb-10 md:mb-12">We are constantly innovating. Here’s a glimpse into the future:</p>
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-        <div class="p-6 md:p-8 bg-gray-900/70 border border-gray-800 rounded-xl shadow-lg hover:shadow-blue-500/30 transition">
-          <h3 class="text-xl md:text-2xl font-semibold text-blue-400 mb-3">Lina Web Version</h3>
-          <p class="text-gray-400">Bringing Lina to browsers with a sleek and responsive design.</p>
-        </div>
-        <div class="p-6 md:p-8 bg-gray-900/70 border border-gray-800 rounded-xl shadow-lg hover:shadow-blue-500/30 transition">
-          <h3 class="text-xl md:text-2xl font-semibold text-blue-400 mb-3">Smaz Cloud</h3>
-          <p class="text-gray-400">A secure cloud solution to connect your data across devices.</p>
-        </div>
-      </div>
-    </div>
+  <!-- CTA Section -->
+  <section class="text-center py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
+    <h2 data-aos="fade-up" class="text-4xl font-bold mb-6 gradient-text">Innovate. Design. Inspire.</h2>
+    <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 max-w-2xl mx-auto mb-8">
+      Each project we create is built on creativity and precision — helping brands stand out in the digital world.
+    </p>
+    <a data-aos="fade-up" data-aos-delay="400" href="contact.html" class="px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-semibold text-white shadow-lg transition transform hover:-translate-y-1">
+      Start Your Project
+    </a>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black text-gray-400 py-8 md:py-10 border-t border-gray-800 text-center text-sm md:text-base">
-    <p>&copy; 2025 Smaz. Powered by <a href="lina.html" class="text-blue-400 hover:underline">Lina</a>.</p>
+  <footer class="bg-black text-gray-400 py-8 border-t border-gray-800 text-center">
+    <p>&copy; <span id="year"></span> Smaz. All rights reserved.</p>
   </footer>
 
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    AOS.init({ duration: 1000, once: true });
+  </script>
 </body>
 </html>

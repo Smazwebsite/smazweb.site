@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Smaz</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="wallpaper.png">
+  <link rel="apple-touch-icon" href="wallpaper.png">
+
+  <!-- Tailwind & AOS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link.active {
+      color: #3b82f6;
+      font-weight: 600;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background-color: #3b82f6;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans" data-page="faq">
+
+  <!-- ✅ Navbar -->
+  <nav class="flex items-center justify-between px-6 sm:px-10 py-4 bg-black/70 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-800">
+    <div class="flex items-center space-x-3">
+      <img src="wallpaper.png" alt="Smaz Logo" class="w-10 h-10 rounded">
+      <h2 class="text-2xl font-extrabold text-blue-500 tracking-wide">Smaz</h2>
+    </div>
+    <ul class="hidden md:flex space-x-8 text-gray-300 font-medium">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="faq.html" class="nav-link active">FAQ</a></li>
+      <li>
+        <a href="lina.html" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white transition">Lina Project</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ✅ Hero Section -->
+  <header class="text-center px-6 py-24 bg-gradient-to-br from-gray-900 to-black">
+    <h1 data-aos="fade-up" class="text-5xl font-extrabold mb-4 text-white">Frequently Asked <span class="text-blue-500">Questions</span></h1>
+    <p data-aos="fade-up" data-aos-delay="200" class="max-w-2xl mx-auto text-gray-400 text-lg leading-relaxed">
+      Find quick answers about our services, projects, and how Smaz can help your brand grow.
+    </p>
+  </header>
+
+  <!-- ✅ FAQ Section -->
+  <section class="max-w-5xl mx-auto px-6 py-16 space-y-10">
+    <div data-aos="fade-up" class="bg-gray-900/60 border border-gray-800 rounded-xl p-6 shadow-md hover:shadow-blue-500/20 transition">
+      <h3 class="text-xl font-semibold text-blue-400 mb-2">What is Smaz?</h3>
+      <p class="text-gray-400">Smaz is a creative digital company led by <strong>Syed Mohammad Abuzar Zaidi</strong> — specializing in website development, UI/UX, graphics, and full brand design solutions.</p>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="100" class="bg-gray-900/60 border border-gray-800 rounded-xl p-6 shadow-md hover:shadow-blue-500/20 transition">
+      <h3 class="text-xl font-semibold text-blue-400 mb-2">What services do you offer?</h3>
+      <p class="text-gray-400">We provide website design, web development, graphic design, digital marketing visuals, and app UI/UX services — everything your digital brand needs.</p>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="200" class="bg-gray-900/60 border border-gray-800 rounded-xl p-6 shadow-md hover:shadow-blue-500/20 transition">
+      <h3 class="text-xl font-semibold text-blue-400 mb-2">Can I hire Smaz for my business website?</h3>
+      <p class="text-gray-400">Yes! Whether you're running a café, store, or startup — we build professional, responsive websites. Visit our <a href="contact.html" class="text-blue-400 hover:underline">Contact Page</a> to get started.</p>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="300" class="bg-gray-900/60 border border-gray-800 rounded-xl p-6 shadow-md hover:shadow-blue-500/20 transition">
+      <h3 class="text-xl font-semibold text-blue-400 mb-2">What is the Lina project?</h3>
+      <p class="text-gray-400"><strong>Lina</strong> is Smaz’s in-house AI app — combining smart chat, reels, and automation into one seamless experience. It’s currently under development.</p>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="400" class="bg-gray-900/60 border border-gray-800 rounded-xl p-6 shadow-md hover:shadow-blue-500/20 transition">
+      <h3 class="text-xl font-semibold text-blue-400 mb-2">How can I join or follow Smaz?</h3>
+      <p class="text-gray-400">Follow us on <a href="#" class="text-blue-400 hover:underline">Facebook</a> or join our <a href="#" class="text-blue-400 hover:underline">WhatsApp Community</a> to stay updated with our latest work.</p>
+    </div>
+  </section>
+
+  <!-- ✅ Footer -->
+  <footer class="bg-black text-gray-400 py-8 border-t border-gray-800 text-center">
+    <p>&copy; <span id="year"></span> Smaz. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    AOS.init({ duration: 1000, once: true });
+  </script>
+</body>
+</html>
