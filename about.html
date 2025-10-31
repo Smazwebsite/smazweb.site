@@ -245,10 +245,21 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-import { getDatabase, ref, push, set, onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  set,
+  onValue,
+  query,
+  orderByChild,
+  equalTo,
+  get,
+  update
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
 import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
-// 🔹 Firebase config
+// 🔹 Firebase config (apna same config rakhna)
 const firebaseConfig = {
   apiKey: "AIzaSyDIbWW0DYmPe-Di6qouH_M9G4sTJn054t4",
   authDomain: "websitefollowers.firebaseapp.com",
@@ -265,50 +276,81 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const auth = getAuth();
 
-// 🔹 Anonymous auth (required for secure writes)
-signInAnonymously(auth).catch(err => console.error(err));
+// 🔹 Optional: anonymous auth so rules with auth != null also work
+signInAnonymously(auth).catch(err => {
+  // Don't block UX if anon sign-in fails, but log it
+  console.warn("Anonymous sign-in failed:", err);
+});
 
 // 🔹 Elements
 const followBtn = document.getElementById("followBtn");
 const emailInput = document.getElementById("emailInput");
 const followerCountEl = document.getElementById("followerCount");
 
-// 🔹 Email validation function
+// 🔹 Helpers
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
+function normalizeEmail(email) {
+  return email.trim().toLowerCase();
+}
 
-// 🔹 Follow button click
+// 🔹 Follow button click -- with duplicate check
 followBtn.addEventListener("click", async () => {
-  const email = emailInput.value.trim();
+  const raw = emailInput.value || "";
+  const email = normalizeEmail(raw);
 
   if (!isValidEmail(email)) {
-    alert("Please enter a valid email!");
+    alert("Please enter a valid email.");
     return;
   }
 
-  const followersRef = ref(db, "followers");
-  const newFollowerRef = push(followersRef);
+  // Disable button while processing
+  followBtn.disabled = true;
+  followBtn.textContent = "Checking...";
 
-  await set(newFollowerRef, {
-    email: email,
-    timestamp: Date.now()
-  });
+  try {
+    const followersRef = ref(db, "followers");
+    // Query for existing follower with same email
+    const q = query(followersRef, orderByChild("email"), equalTo(email));
+    const snap = await get(q);
 
-  alert("Thanks for following!");
-  emailInput.value = "";
+    if (snap.exists()) {
+      // Email already present
+      // Optionally update timestamp of that existing record
+      const data = snap.val();
+      const firstKey = Object.keys(data)[0];
+      const itemRef = ref(db, `followers/${firstKey}`);
+      await update(itemRef, { lastSeen: Date.now() }); // update timestamp (optional)
+
+      alert("You are already following — thanks!");
+    } else {
+      // Not found → create new follower
+      const newRef = push(followersRef);
+      await set(newRef, {
+        email: email,
+        createdAt: Date.now()
+      });
+      alert("Thanks for following!");
+      emailInput.value = "";
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong. Please try again.");
+  } finally {
+    followBtn.disabled = false;
+    followBtn.textContent = "Follow";
+  }
 });
 
 // 🔹 Realtime followers count
-const followersRef = ref(db, "followers");
-onValue(followersRef, (snapshot) => {
+const followersRefRealtime = ref(db, "followers");
+onValue(followersRefRealtime, (snapshot) => {
   const data = snapshot.val();
   const total = data ? Object.keys(data).length : 0;
   followerCountEl.textContent = `Followers: ${total}`;
 });
 </script>
-
-
 
 </body>
 </html>
