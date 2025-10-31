@@ -243,25 +243,71 @@
   });
 </script>
 
-<script>
-  // Initialize followers
-  let followers = JSON.parse(localStorage.getItem("websiteFollowers")) || [];
-  document.getElementById("followerCount").textContent = `Followers: ${followers.length}`;
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+import { getDatabase, ref, push, set, onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
-  // Follow button click
-  document.getElementById("followBtn").addEventListener("click", () => {
-    const email = document.getElementById("emailInput").value.trim();
-    if(email && !followers.includes(email)){
-      followers.push(email);
-      localStorage.setItem("websiteFollowers", JSON.stringify(followers));
-      document.getElementById("followerCount").textContent = `Followers: ${followers.length}`;
-      alert("Thanks for following!");
-    } else {
-      alert("Invalid or already followed!");
-    }
-    document.getElementById("emailInput").value = "";
+// 🔹 Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyDIbWW0DYmPe-Di6qouH_M9G4sTJn054t4",
+  authDomain: "websitefollowers.firebaseapp.com",
+  databaseURL: "https://websitefollowers-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  projectId: "websitefollowers",
+  storageBucket: "websitefollowers.firebasestorage.app",
+  messagingSenderId: "549593567533",
+  appId: "1:549593567533:web:5c6cb522a507a727a843a4",
+  measurementId: "G-Y73B2GEMD3"
+};
+
+// 🔹 Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const auth = getAuth();
+
+// 🔹 Anonymous auth (required for secure writes)
+signInAnonymously(auth).catch(err => console.error(err));
+
+// 🔹 Elements
+const followBtn = document.getElementById("followBtn");
+const emailInput = document.getElementById("emailInput");
+const followerCountEl = document.getElementById("followerCount");
+
+// 🔹 Email validation function
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// 🔹 Follow button click
+followBtn.addEventListener("click", async () => {
+  const email = emailInput.value.trim();
+
+  if (!isValidEmail(email)) {
+    alert("Please enter a valid email!");
+    return;
+  }
+
+  const followersRef = ref(db, "followers");
+  const newFollowerRef = push(followersRef);
+
+  await set(newFollowerRef, {
+    email: email,
+    timestamp: Date.now()
   });
+
+  alert("Thanks for following!");
+  emailInput.value = "";
+});
+
+// 🔹 Realtime followers count
+const followersRef = ref(db, "followers");
+onValue(followersRef, (snapshot) => {
+  const data = snapshot.val();
+  const total = data ? Object.keys(data).length : 0;
+  followerCountEl.textContent = `Followers: ${total}`;
+});
 </script>
+
 
 
 </body>
