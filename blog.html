@@ -6,13 +6,13 @@
 <link rel="apple-touch-icon" href="wallpaper.png">
 <link rel="icon" sizes="192x192" href="wallpaper.png">
 
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact – Smaz</title>
-  <meta name="description" content="Get in touch with Smaz – for support, business inquiries, or partnerships. Contact us via email, form, or social links.">
+  <title>Blog – Smaz</title>
+  <meta name="description" content="Stay updated with news, announcements, and insights from Smaz."/>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans" data-page="contact">
+<body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans" data-page="blog">
 
   <!-- Navbar -->
   <nav class="flex items-center justify-between px-6 md:px-8 py-4 bg-black/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800">
@@ -35,8 +35,11 @@
         </a>
       </li>
     </ul>
+
     <!-- Mobile Menu Button -->
-    <button id="menu-btn" class="md:hidden text-gray-300 focus:outline-none text-2xl">☰</button>
+    <button id="menu-btn" class="md:hidden text-gray-300 focus:outline-none text-2xl">
+      ☰
+    </button>
   </nav>
 
   <!-- Mobile Dropdown -->
@@ -70,50 +73,50 @@
     });
   </script>
 
-  <!-- Contact Header -->
+  <!-- Hero -->
   <header class="text-center py-16 px-6">
-    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4">Get in Touch</h1>
+    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4">Latest Updates</h1>
     <p class="text-gray-400 max-w-2xl mx-auto text-base md:text-lg">
-      Have questions, feedback, or partnership inquiries?  
-      We’d love to hear from you – let’s connect.
+      Stay updated with news, announcements, and insights from Smaz.
     </p>
   </header>
 
-  <!-- Contact Form -->
-  <section class="max-w-3xl mx-auto px-6 md:px-8 py-12 bg-gray-900/70 rounded-xl shadow-lg border border-gray-800">
-    <form action="https://formspree.io/f/mjkarogv" method="POST" class="space-y-6"> 
-      <div>
-        <label class="block text-gray-300 mb-2">Name</label>
-        <input type="text" name="name" class="w-full px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" required>
-      </div>
-      <div>
-        <label class="block text-gray-300 mb-2">Email</label>
-        <input type="email" name="email" class="w-full px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" required>
-      </div>
-      <div>
-        <label class="block text-gray-300 mb-2">Message</label>
-        <textarea name="message" rows="5" class="w-full px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" required></textarea>
-      </div>
-      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 transition text-white font-bold py-3 rounded-lg">Send Message</button>
-    </form>
-  </section>
+  <!-- Blog Section -->
+  <section class="max-w-6xl mx-auto px-6 pb-16 grid gap-8 sm:grid-cols-1 md:grid-cols-2">
 
-  <!-- Contact Info -->
-  <section class="text-center py-12 px-6 space-y-4">
-    <p>Email: <a href="mailto:info@smazweb.site" class="text-blue-400 hover:underline">info@smazweb.site</a></p>
-    <p>
-      Follow us: 
-      <a href="https://wa.me/923293642275" target="_blank" class="text-blue-400 mx-2 hover:underline">WhatsApp (+92 329 3642275)</a>
-    </p>
-    <p class="text-gray-500 text-sm">
-      Need quick help? Visit our 
-      <a href="faq.html" class="text-blue-400 hover:underline">FAQ</a>.
-    </p>
+    <!-- Post 1 -->
+    <article class="p-6 md:p-8 bg-gray-900/70 rounded-xl border border-gray-800 shadow-lg hover:shadow-blue-500/40 transition">
+      <h2 class="text-xl md:text-2xl font-bold text-blue-400 mb-2">🚀 Launching Lina</h2>
+      <p class="text-sm text-gray-500 mb-3">Published Jan 15, 2025 • By Team Smaz</p>
+      <p class="text-gray-400 mb-4">We are excited to announce the launch of Lina, our first AI-powered app that connects people like never before.</p>
+      <a href="blog-post1.html" class="text-blue-500 hover:underline">Read more →</a>
+    </article>
+
+    <!-- Post 2 -->
+    <article class="p-6 md:p-8 bg-gray-900/70 rounded-xl border border-gray-800 shadow-lg hover:shadow-blue-500/40 transition">
+      <h2 class="text-xl md:text-2xl font-bold text-blue-400 mb-2">📱 Sneak Peek – Lina Web</h2>
+      <p class="text-sm text-gray-500 mb-3">Published Feb 2, 2025 • By Team Smaz</p>
+      <p class="text-gray-400 mb-4">We’re working on bringing Lina to the web for seamless cross-platform experience.</p>
+      <a href="blog-post2.html" class="text-blue-500 hover:underline">Read more →</a>
+    </article>
+
+    <!-- Future Post Placeholder -->
+    <article class="p-6 md:p-8 bg-gray-900/70 rounded-xl border border-gray-800 shadow-lg hover:shadow-blue-500/40 transition">
+      <h2 class="text-xl md:text-2xl font-bold text-blue-400 mb-2">🌍 What’s Next for Smaz</h2>
+      <p class="text-sm text-gray-500 mb-3">Coming Soon</p>
+      <p class="text-gray-400 mb-4">Stay tuned for upcoming announcements about new features, partnerships, and growth of our ecosystem.</p>
+      <a href="#" class="text-blue-500 hover:underline">Read more →</a>
+    </article>
+
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black text-gray-400 py-8 border-t border-gray-800 text-center px-4">
+  <footer class="bg-black text-gray-400 py-10 border-t border-gray-800 text-center space-y-3 px-4">
     <p>&copy; 2026 Smaz. All Rights Reserved.</p>
+    <p>
+      <a href="privacy.html" class="hover:text-blue-400">Privacy Policy</a> • 
+      <a href="terms.html" class="hover:text-blue-400">Terms & Conditions</a>
+    </p>
   </footer>
 
 </body>
