@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinXhare — Your Finance Hub</title>
+  <link rel="icon" type="image/png" href="wallpaper.png">
+  <link rel="apple-touch-icon" href="wallpaper.png">
+  <link rel="icon" sizes="192x192" href="wallpaper.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .gradient-text { background: linear-gradient(to right,#3b82f6,#60a5fa,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border:1px solid rgba(255,255,255,0.1); border-radius:1rem; transition: all 0.4s ease; overflow:hidden; }
+    .glass:hover { box-shadow:0 18px 40px rgba(59,130,246,0.16);}
+    .nav-link { position:relative; transition: color .25s ease; }
+    .nav-link.active { color:#3b82f6; font-weight:600; }
+    .nav-link::after { content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:#3b82f6; transition:width .25s ease;}
+    .nav-link:hover::after, .nav-link.active::after { width:100%; }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans" data-page="finxhare">
+
+<!-- NAVBAR -->
+<nav class="flex items-center justify-between px-6 sm:px-10 py-4 bg-black/70 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-800">
+  <div class="flex items-center space-x-3">
+    <img src="wallpaper.png" alt="Smaz Logo" class="w-10 h-10 rounded">
+    <h2 class="text-2xl font-extrabold text-blue-500 tracking-wide">Smaz</h2>
+    <span class="text-sm text-gray-400 ml-2">• FinXhare</span>
+  </div>
+
+  <ul class="hidden md:flex space-x-8 text-gray-300 font-medium items-center">
+    <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
+    <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
+    <li><a href="services.html" class="nav-link" data-page="services">Services</a></li>
+    <li><a href="portfolio.html" class="nav-link" data-page="portfolio">Portfolio</a></li>
+    <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
+    <li><a href="#tabs" class="nav-link active" data-page="finxhare">FinXhare</a></li>
+    <li>
+        <a href="#notify" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold transition">Notify Me</a>
+      </li>
+  </ul>
+
+  <!-- Mobile -->
+  <div class="md:hidden">
+    <button id="menu-btn" class="text-gray-300 text-2xl">☰</button>
+  </div>
+</nav>
+<div id="mobile-menu" class="hidden md:hidden bg-black/90 border-t border-gray-800 px-6 py-4 space-y-3">
+  <a href="index.html" class="block nav-link" data-page="home">Home</a>
+  <a href="#tabs" class="block nav-link active" data-page="finxhare">FinXhare Tabs</a>
+  <a href="contact.html" class="block nav-link" data-page="contact">Contact</a>
+  <a href="#notify" class="block px-4 py-2 bg-blue-600 rounded-lg text-white text-center">Notify Me</a>
+</div>
+
+<!-- HERO -->
+<header class="text-center px-6 py-20 md:py-28">
+  <img src="ad1.jpeg" alt="FinXhare Logo" class="w-20 h-20 md:w-28 md:h-28 mx-auto mb-6" />
+
+  <h1 data-aos="fade-up" class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+    Fin<span class="text-orange-500">X</span>hare —
+    <span class="gradient-text">Manage All Your Finances</span>
+  </h1>
+
+  <p data-aos="fade-up" data-aos-delay="120"
+     class="max-w-3xl mx-auto text-gray-300 text-base md:text-lg mb-6">
+    A unified finance management platform to track Personal, Business, Custom setups,
+    Planner & Reports — everything in one place.
+  </p>
+</header>
+
+
+<div data-aos="fade-up" data-aos-delay="300" class="flex gap-4 justify-center">
+      <a href="#download" class="px-6 py-3 md:px-8 md:py-3 bg-blue-600 text-white rounded-lg font-semibold shadow-lg hover:bg-blue-500 transition transform hover:-translate-y-1">Download APK</a>
+     </div>
+
+<!-- TABS -->
+<section id="tabs" class="py-16 px-6 max-w-7xl mx-auto">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">
+    FinXhare Sections
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+    <!-- Card -->
+    <div data-aos="fade-up" class="glass p-6 rounded-2xl">
+      <img src="personal.jpeg" alt="Personal Finance"
+           class="w-full object-contain rounded-xl mb-4">
+      <h3 class="text-2xl font-semibold text-blue-500 mb-2">Personal Finance</h3>
+      <p class="text-gray-300 text-base leading-relaxed">
+        Track income, expenses, savings, and budgets in one clean dashboard.
+      </p>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="100" class="glass p-6 rounded-2xl">
+      <img src="finxhare.jpeg" alt="Business Management"
+           class="w-full object-contain rounded-xl mb-4">
+      <h3 class="text-2xl font-semibold text-blue-500 mb-2">Business Management</h3>
+      <p class="text-gray-300 text-base leading-relaxed">
+        Manage partners, profits, expenses, and business finances seamlessly.
+      </p>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="200" class="glass p-6 rounded-2xl">
+      <img src="customs.jpeg" alt="Custom Finance"
+           class="w-full object-contain rounded-xl mb-4">
+      <h3 class="text-2xl font-semibold text-blue-500 mb-2">Custom Finance</h3>
+      <p class="text-gray-300 text-base leading-relaxed">
+        Build custom sheets, formulas, and workflows tailored to your needs.
+      </p>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="300" class="glass p-6 rounded-2xl">
+      <img src="reports.jpeg" alt="Reports"
+           class="w-full object-contain rounded-xl mb-4">
+      <h3 class="text-2xl font-semibold text-blue-500 mb-2">Reports</h3>
+      <p class="text-gray-300 text-base leading-relaxed">
+        Generate daily, monthly, and yearly financial reports.
+      </p>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="400" class="glass p-6 rounded-2xl">
+      <img src="planner.jpeg" alt="Planner"
+           class="w-full object-contain rounded-xl mb-4">
+      <h3 class="text-2xl font-semibold text-blue-500 mb-2">Planner</h3>
+      <p class="text-gray-300 text-base leading-relaxed">
+        Plan tasks, routines, and notes to stay productive.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- DOWNLOAD / NOTIFY -->
+  <section id="download" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-white mb-4">Get Early Access</h2>
+      <p class="text-gray-400 mb-6">Want to be first to try Lina? Leave your email and we'll notify you when testing opens.</p>
+
+      <form id="notify" action="https://formspree.io/f/mjkarogv" method="POST" class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+        <input name="email" type="email" placeholder="you@example.com" required
+               class="w-full sm:w-auto min-w-[260px] px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" />
+        <button type="submit" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white shadow-lg transition transform hover:-translate-y-1">Notify Me</button>
+      </form>
+
+      <p class="text-sm text-gray-500 mt-4">We'll only send Lina updates. No spam — unsubscribe any time.</p>
+    </div>
+  </section>
+
+  <!-- FAQ for FinXhare -->
+<section id="faq" class="py-12 px-6 bg-gradient-to-b from-gray-900 to-black">
+  <div class="max-w-3xl mx-auto" data-aos="fade-up">
+    <h3 class="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h3>
+    <div class="space-y-4">
+      
+      <details class="p-4 rounded-xl glass border border-gray-800">
+        <summary class="cursor-pointer font-semibold text-white">Is FinXhare free to use?</summary>
+        <p class="mt-2 text-gray-400">
+          Yes — the core FinXhare platform is free. Premium features and advanced reports may be added in the future.
+        </p>
+      </details>
+
+      <details class="p-4 rounded-xl glass border border-gray-800">
+        <summary class="cursor-pointer font-semibold text-white">When will FinXhare be fully launched?</summary>
+        <p class="mt-2 text-gray-400">
+          FinXhare is already live for core features. Additional modules like advanced reports and custom dashboards are in active development.
+        </p>
+      </details>
+
+      <details class="p-4 rounded-xl glass border border-gray-800">
+        <summary class="cursor-pointer font-semibold text-white">Can I manage both personal and business finances?</summary>
+        <p class="mt-2 text-gray-400">
+          Absolutely — FinXhare is designed to handle personal, business, and custom setups all in one platform.
+        </p>
+      </details>
+
+      <details class="p-4 rounded-xl glass border border-gray-800">
+        <summary class="cursor-pointer font-semibold text-white">Is my financial data secure?</summary>
+        <p class="mt-2 text-gray-400">
+          Security is a top priority. FinXhare uses secure storage and privacy protocols to protect your data.
+        </p>
+      </details>
+
+      <details class="p-4 rounded-xl glass border border-gray-800">
+        <summary class="cursor-pointer font-semibold text-white">Can I export reports and analytics?</summary>
+        <p class="mt-2 text-gray-400">
+          Yes — the reporting module will support PDF and CSV exports, along with charts and analytics dashboards (currently under development).
+        </p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER (Single-line version for FinXhare) -->
+<footer class="bg-black text-gray-300 py-6 border-t border-gray-800">
+  <div class="max-w-6xl mx-auto px-4 flex flex-wrap justify-between items-center gap-4">
+    
+    <!-- Copyright -->
+    <p class="text-sm flex-shrink-0">
+      &copy; <span id="year"></span> Smaz. FinXhare — Powered by Smaz.
+    </p>
+    
+    <!-- Social Buttons + Follow -->
+    <div class="flex flex-wrap items-center gap-3">
+      
+      <!-- Facebook Follow -->
+      <a href="https://www.facebook.com/profile.php?id=61581496394306" target="_blank" class="flex items-center px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition shadow-md hover:shadow-lg whitespace-nowrap">
+        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22 12a10 10 0 1 0-11.5 9.87v-6.99H8v-2.88h2.5v-2.2c0-2.47 1.47-3.84 3.72-3.84 1.08 0 2.22.2 2.22.2v2.44h-1.25c-1.23 0-1.62.77-1.62 1.56v1.84h2.77l-.44 2.88h-2.33v6.99A10 10 0 0 0 22 12z"/>
+        </svg>
+        Facebook
+      </a>
+
+      <!-- WhatsApp Message -->
+      <a href="https://wa.me/923293642275" target="_blank" class="flex items-center px-3 py-2 bg-green-500 hover:bg-green-400 text-white rounded-lg transition shadow-md hover:shadow-lg whitespace-nowrap">
+        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.52 3.48A11.89 11.89 0 0 0 3.48 20.52l-1.06 3.87 3.98-1.05A11.88 11.88 0 0 0 20.52 3.48zM12 21a9 9 0 0 1-4.6-1.2l-.33-.2-2.65.7.7-2.6-.22-.34A9 9 0 1 1 12 21zm5.43-7.08c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.64.78-.78.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.44-1.34-1.68-.14-.24-.02-.36.1-.48.1-.1.24-.26.36-.38.12-.12.16-.22.24-.36.08-.14.04-.26-.02-.38-.06-.12-.54-1.3-.74-1.78-.2-.46-.4-.4-.54-.4-.14 0-.3-.02-.46-.02s-.38.06-.58.28c-.2.22-.78.76-.78 1.84s.8 2.14.92 2.3c.12.16 1.6 2.44 3.88 3.42.54.23.96.36 1.28.46.54.18 1.04.16 1.44.1.44-.06 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/>
+        </svg>
+        WhatsApp
+      </a>
+
+      <!-- Email Follow -->
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <input id="emailInput" type="email" placeholder="Your email..." class="px-3 py-2 rounded-lg text-black" />
+        <button id="followBtn" class="px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg whitespace-nowrap">
+          Follow
+        </button>
+      </div>
+
+      <!-- Follower Count -->
+      <p id="followerCount" class="text-sm flex-shrink-0">Followers: 0</p>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  AOS.init({ duration: 900, once: true });
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+  // Active nav
+  document.querySelectorAll('.nav-link').forEach(link=>{
+    const page=document.body.getAttribute('data-page');
+    if(link.dataset.page===page) link.classList.add('active'); else link.classList.remove('active');
+  });
+</script>
+
+</body>
+</html>

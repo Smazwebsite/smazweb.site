@@ -1,175 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Charset & Viewport -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smaz — Creative Web & Design Studio | Websites • Graphics • Apps</title>
 
-  <!-- Website Title (appears in Google search) -->
-  <title>Smaz Web — Official Site of Smaz</title>
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Welcome to Smaz — official site of Smaz Web. Discover AI-powered innovation with Lina, the all-in-one super app for chat, reels, and more.">
-  <meta name="keywords" content="Smaz, Smaz Web, Lina, AI App, Super App, Chat, Reels, Stories, Digital Innovation">
-  <meta name="author" content="Smaz Official">
-  <meta name="robots" content="index, follow">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://smazweb.site/">
-
-  <!-- Favicon / Website Logo -->
-  <link rel="icon" type="image/png" href="wallpaper.png">
-  <link rel="apple-touch-icon" href="wallpaper.png">
-  <link rel="icon" sizes="192x192" href="wallpaper.png">
-
-  <!-- Open Graph (Facebook / WhatsApp / LinkedIn preview) -->
-  <meta property="og:title" content="Smaz Web — Official Site of Smaz">
-  <meta property="og:description" content="Smaz is building the future of AI apps. Explore Lina — the all-in-one assistant app by Smaz.">
-  <meta property="og:image" content="https://smazweb.site/wallpaper.png">
-  <meta property="og:url" content="https://smazweb.site">
-  <meta property="og:type" content="website">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Smaz Web — Official Site of Smaz">
-  <meta name="twitter:description" content="Discover Smaz Web — home of Lina, an AI-powered super app that unites chat, reels, and stories.">
-  <meta name="twitter:image" content="https://smazweb.site/wallpaper.png">
-
-  <!-- Structured Data (Schema.org JSON-LD for Google) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Smaz",
-    "alternateName": "Smaz Web",
-    "url": "https://smazweb.site",
-    "logo": "https://smazweb.site/wallpaper.png",
-    "description": "Smaz builds AI-powered apps like Lina — an all-in-one assistant app with chat, reels, and stories.",
-    "founder": "Smaz Official",
-    "sameAs": [
-      "https://twitter.com/",
-      "https://www.linkedin.com/",
-      "https://facebook.com/"
-    ]
-  }
-  </script>
+  <meta name="description" content="Smaz is a professional digital studio crafting premium websites, branding, and graphic design. Explore our creative work and our upcoming innovation — Lina." />
+  <meta name="keywords" content="Smaz, Web Design Pakistan, Portfolio, Creative Agency, Branding, Lina App, UI Design, Poster Design" />
+  <meta name="author" content="Smaz Official" />
+  <link rel="canonical" href="https://smazweb.site/" />
+  <link rel="icon" type="image/png" href="wallpaper.png" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .gradient-text {
+      background: linear-gradient(to right, #3b82f6, #60a5fa, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Glow Hover Effect */
+    .glass::after {
+      content: "";
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, rgba(37,99,235,0.6) 0%, transparent 70%);
+      transition: all 0.4s ease;
+      z-index: 0;
+    }
+
+    .glass:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(59,130,246,0.3);
+    }
+
+    .glass:hover::after {
+      width: 250%;
+      height: 250%;
+      bottom: -20%;
+    }
+
+    /* Navbar Active Link */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link.active {
+      color: #3b82f6;
+      font-weight: 600;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background-color: #3b82f6;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+  </style>
 </head>
+
 <body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans" data-page="home">
 
-  <!-- Navbar -->
-  <nav class="flex items-center justify-between px-4 sm:px-8 py-4 bg-black/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800" aria-label="Main Navigation">
-    <div class="flex items-center space-x-3">
-      <img src="wallpaper.png" alt="Smaz Logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded">
-      <h2 class="text-xl sm:text-2xl font-extrabold tracking-wide text-blue-500">Smaz</h2>
-    </div>
-    <!-- Mobile menu (hamburger) -->
-    <div class="md:hidden">
-      <button id="menu-btn" aria-label="Toggle Menu" class="text-gray-300 focus:outline-none">
-        ☰
-      </button>
-    </div>
-    <ul id="menu" class="hidden md:flex space-x-4 sm:space-x-6 text-gray-300 font-medium">
-      <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
-      <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
-      <li><a href="features.html" class="nav-link" data-page="features">Features</a></li>
-      <li><a href="portfolio.html" class="nav-link" data-page="portfolio">Portfolio</a></li>
-      <li><a href="blog.html" class="nav-link" data-page="blog">Blog</a></li>
-      <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
-      <li><a href="privacy.html" class="nav-link" data-page="privacy">Privacy</a></li>
-      <li>
-        <a href="lina.html" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold transition block text-center">
-          Explore Lina
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <!-- ---------- START: Header (copy into index.html) ---------- -->
+<nav class="flex items-center justify-between px-6 sm:px-10 py-4 bg-black/70 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-800">
+  <div class="flex items-center space-x-3">
+    <img src="wallpaper.png" alt="Smaz Logo" class="w-10 h-10 rounded">
+    <h2 class="text-2xl font-extrabold text-blue-500 tracking-wide">Smaz</h2>
+  </div>
 
-  <!-- Mobile menu toggle script -->
-  <script>
-    const btn = document.getElementById("menu-btn");
-    const menu = document.getElementById("menu");
-    btn.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-      menu.classList.toggle("flex");
-      menu.classList.toggle("flex-col");
-      menu.classList.toggle("space-y-4");
-      menu.classList.add("mt-4","md:mt-0");
-    });
-  </script>
+  <!-- Desktop Links -->
+  <ul class="hidden md:flex space-x-8 text-gray-300 font-medium">
+    <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
+    <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
+    <li><a href="services.html" class="nav-link" data-page="services">Services</a></li>
+    <li><a href="portfolio.html" class="nav-link" data-page="portfolio">Portfolio</a></li>
+    <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
+    <li>
+      <a href="apps.html" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white transition">Apps</a>
+    </li>
+  </ul>
 
-  <!-- Active Link Script -->
-  <script>
-    const activePage = document.body.getAttribute('data-page');
-    document.querySelectorAll('.nav-link').forEach(link => {
-      if(link.dataset.page === activePage){
-        link.classList.add('text-blue-500', 'font-semibold');
-      } else {
-        link.classList.remove('text-blue-500', 'font-semibold');
-      }
-    });
-  </script>
+  <!-- Mobile Button -->
+  <div class="md:hidden">
+    <button id="menu-btn" class="text-gray-300 text-2xl focus:outline-none" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<!-- Mobile Menu (place right after nav) -->
+<div id="mobile-menu" class="hidden md:hidden bg-black/90 backdrop-blur-lg border-t border-gray-700 px-6 pb-4 space-y-3">
+  <a href="index.html" class="block nav-link" data-page="home">Home</a>
+  <a href="about.html" class="block nav-link" data-page="about">About</a>
+  <a href="services.html" class="block nav-link" data-page="services">Services</a>
+  <a href="portfolio.html" class="block nav-link" data-page="portfolio">Portfolio</a>
+  <a href="contact.html" class="block nav-link" data-page="contact">Contact</a>
+  <a href="apps.html" class="block px-5 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white text-center">Apps</a>
+</div>
+<!-- ---------- END: Header ---------- -->
+
 
   <!-- Hero Section -->
-  <header class="flex flex-col items-center justify-center text-center px-4 sm:px-6 py-20 sm:py-28 bg-gradient-to-r from-gray-900 to-black">
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-white drop-shadow-lg leading-tight">
-      Welcome to <span class="text-blue-500">Smaz</span>
+  <header class="flex flex-col items-center justify-center text-center px-6 py-36 sm:py-44 bg-gradient-to-br from-gray-900 to-black">
+    <h1 data-aos="fade-up" data-aos-duration="1000" class="text-5xl sm:text-6xl font-extrabold mb-6 leading-tight text-white">
+      We Build <span class="gradient-text">Websites & Brands</span> That Inspire
     </h1>
-    <p class="max-w-3xl text-base sm:text-lg leading-relaxed mb-8 text-gray-300">
-      Building the future of digital experiences.  
-      Discover <strong>Lina</strong> – the all-in-one assistant app that seamlessly connects  
-      <span class="text-blue-400">Home feed, Chat, Reels, Stories, Profile, and AI</span> into one smart ecosystem.
+    <p data-aos="fade-up" data-aos-delay="200" class="max-w-2xl text-lg text-gray-400 mb-10">
+      At <span class="text-blue-400 font-semibold">Smaz</span>, we create stunning, high-performing websites and graphics that help brands grow, connect, and stand out in the digital world.
     </p>
-    <div class="flex flex-wrap gap-4 justify-center">
-      <a href="lina.html" class="px-6 sm:px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-500 transition">
-        Meet Lina
-      </a>
-      <a href="about.html" class="px-6 sm:px-8 py-3 bg-gray-800 text-gray-200 font-semibold rounded-lg border border-gray-700 hover:border-blue-500 transition">
-        Learn More
-      </a>
+    <div data-aos="fade-up" data-aos-delay="400" class="flex gap-4 justify-center">
+      <a href="services.html" class="px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-semibold text-white shadow-lg transition transform hover:-translate-y-1">Explore Services</a>
+      <a href="portfolio.html" class="px-8 py-3 border border-gray-600 rounded-xl font-semibold text-gray-300 hover:border-blue-500 transition transform hover:-translate-y-1">View Portfolio</a>
     </div>
   </header>
 
-  <!-- Highlights Section -->
-  <section class="py-16 sm:py-20 px-4 sm:px-6">
+  <!-- FinXhare Ad Popup -->
+<div id="finxhare-ad" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-xl max-w-md w-full p-6 relative text-center">
+    
+    <!-- Image -->
+    <img src="ad1.jpeg" alt="FinXhare Ad" class="mx-auto mb-4 rounded-lg shadow-lg">
+
+    <!-- Tagline -->
+    <p class="text-gray-700 text-lg font-semibold mb-6">
+      Your Personal Finance Management App
+    </p>
+
+    <!-- Close Button -->
+    <button id="closeAdBtn" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition">
+      Close
+    </button>
+    <button id="Learn MoreAdBtn" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition">
+      Learn More
+    </button>
+  </div>
+</div>
+
+
+
+  <!-- Services Section -->
+  <section class="py-20 px-6" id="services">
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-12">Why Choose Smaz?</h2>
+      <h2 data-aos="fade-up" class="text-4xl font-bold text-white mb-10">Our Expertise</h2>
       <div class="grid gap-8 md:grid-cols-3">
-        <div class="p-6 sm:p-8 rounded-xl bg-gray-900/60 backdrop-blur-md border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
-          <h3 class="text-lg sm:text-xl font-semibold mb-3 text-blue-400">Innovation</h3>
-          <p class="text-gray-400 text-sm sm:text-base">We design futuristic solutions powered by creativity and cutting-edge technology.</p>
+        <div data-aos="zoom-in" data-aos-delay="100" class="p-8 rounded-2xl glass relative">
+          <h3 class="text-xl font-semibold mb-3 text-blue-400 relative z-10">Website Design & Development</h3>
+          <p class="text-gray-400 relative z-10">Responsive, fast, and beautiful websites crafted with precision. From business sites to personal portfolios — we build it all.</p>
         </div>
-        <div class="p-6 sm:p-8 rounded-xl bg-gray-900/60 backdrop-blur-md border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
-          <h3 class="text-lg sm:text-xl font-semibold mb-3 text-blue-400">All-in-One Ecosystem</h3>
-          <p class="text-gray-400 text-sm sm:text-base">From personal AI to smart apps, we bring everything under one brand – Smaz.</p>
+        <div data-aos="zoom-in" data-aos-delay="200" class="p-8 rounded-2xl glass relative">
+          <h3 class="text-xl font-semibold mb-3 text-blue-400 relative z-10">Graphics & Branding</h3>
+          <p class="text-gray-400 relative z-10">Professional posters, logos, and social media designs that tell your brand’s story visually and beautifully.</p>
         </div>
-        <div class="p-6 sm:p-8 rounded-xl bg-gray-900/60 backdrop-blur-md border border-gray-800 shadow-lg hover:shadow-blue-500/30 transition">
-          <h3 class="text-lg sm:text-xl font-semibold mb-3 text-blue-400">Future Ready</h3>
-          <p class="text-gray-400 text-sm sm:text-base">Our products are built to scale with modern lifestyles and tomorrow’s needs.</p>
+        <div data-aos="zoom-in" data-aos-delay="300" class="p-8 rounded-2xl glass relative">
+          <h3 class="text-xl font-semibold mb-3 text-blue-400 relative z-10">Upcomming Project — FinXhare</h3>
+          <p class="text-gray-400 relative z-10">Our upcoming flagship innovation — <strong>FinXhare</strong> — the ultimate all-in-one finance management platform for personal and business use. Currently in development.</p>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="300" class="p-8 rounded-2xl glass relative">
+          <h3 class="text-xl font-semibold mb-3 text-blue-400 relative z-10">Future Project — Lina</h3>
+          <p class="text-gray-400 relative z-10">Our Future flagship innovation — <strong>Lina</strong> — a next-gen all-in-one digital platform. Currently in development.</p>
+        </div>
+        
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Work With Me -->
+  <section class="py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 px-6 text-center">
+    <div class="max-w-5xl mx-auto">
+      <h2 data-aos="fade-up" class="text-4xl font-bold mb-10">Why Choose <span class="gradient-text">Smaz?</span></h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div data-aos="fade-up" data-aos-delay="100" class="glass p-6 rounded-xl">
+          <h3 class="text-xl text-blue-400 font-semibold mb-3">Creative & Modern</h3>
+          <p class="text-gray-400 text-sm">We bring creativity with functionality — ensuring your website looks stunning and performs perfectly.</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200" class="glass p-6 rounded-xl">
+          <h3 class="text-xl text-blue-400 font-semibold mb-3">End-to-End Solutions</h3>
+          <p class="text-gray-400 text-sm">From website UI/UX design to posters and graphics — we handle everything under one creative studio.</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="300" class="glass p-6 rounded-xl">
+          <h3 class="text-xl text-blue-400 font-semibold mb-3">Reliable & Professional</h3>
+          <p class="text-gray-400 text-sm">We deliver projects on time with clear communication and professional results every single time.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-black text-gray-400 py-8 sm:py-10 border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center">
-      <p class="text-sm sm:text-base">&copy; <span id="year"></span> Smaz. All rights reserved.</p>
-      <ul class="flex flex-wrap justify-center md:justify-end space-x-4 sm:space-x-6 mt-4 md:mt-0 text-sm sm:text-base">
-        <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
-        <li><a href="terms.html" class="hover:text-white">Terms of Service</a></li>
-        <li><a href="blog.html" class="hover:text-white">Blog</a></li>
-        <li><a href="contact.html" class="hover:text-white">Support</a></li>
-      </ul>
-    </div>
-  </footer>
+  <!-- Apps Showcase Section -->
+<section class="py-24 px-6 text-center bg-gradient-to-t from-gray-900 via-gray-800 to-black">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold mb-12 gradient-text">Our Apps</h2>
+    
+    <div class="grid md:grid-cols-2 gap-10 justify-items-center">
+      
+      <!-- FinXhare App Card -->
+      <div class="bg-gray-850 p-6 rounded-2xl flex flex-col items-center w-80 shadow-md">
+        <img src="ad1.jpeg" alt="FinXhare App" class="w-32 h-32 object-cover rounded-xl shadow mb-4">
+        <h3 class="text-2xl font-bold text-blue-500 mb-2">FinXhare</h3>
+        <p class="text-gray-300 mb-4 text-sm text-center">
+          The ultimate personal & business finance management app — powerful, fast, and easy to use.
+        </p>
+        <a href="finxhare.html" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold shadow hover:bg-blue-500 transition">
+          More About FinXhare
+        </a>
+      </div>
 
-  <!-- Auto Year Script -->
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+      <!-- Lina App Card -->
+      <div class="bg-gray-850 p-6 rounded-2xl flex flex-col items-center w-80 shadow-md">
+        <img src="icon.png" alt="Lina App" class="w-32 h-32 object-cover rounded-xl shadow mb-4">
+        <h3 class="text-2xl font-bold text-blue-500 mb-2">Lina</h3>
+        <p class="text-gray-300 mb-4 text-sm text-center">
+          A next-gen all-in-one digital platform with chat, reels, stories, and AI features.
+        </p>
+        <a href="lina.html" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold shadow hover:bg-blue-500 transition">
+          More About Lina
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  
+
+  /* Button real look */
+  a:hover {
+    text-decoration: none;
+  }
+</style>
+
+
+  <!-- Footer -->
+<footer class="bg-black text-gray-300 py-8 border-t border-gray-800">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+    
+    <!-- Copyright -->
+    <p class="text-sm">&copy; <span id="year"></span> Smaz. All rights reserved.</p>
+    
+    <!-- Social Buttons -->
+    <div class="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-4">
+      
+      <!-- Facebook Follow -->
+      <a href="https://www.facebook.com/profile.php?id=61581496394306" target="_blank" class="flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition shadow-md hover:shadow-lg">
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22 12a10 10 0 1 0-11.5 9.87v-6.99H8v-2.88h2.5v-2.2c0-2.47 1.47-3.84 3.72-3.84 1.08 0 2.22.2 2.22.2v2.44h-1.25c-1.23 0-1.62.77-1.62 1.56v1.84h2.77l-.44 2.88h-2.33v6.99A10 10 0 0 0 22 12z"/>
+        </svg>
+        Follow on Facebook
+      </a>
+
+      <!-- WhatsApp Message -->
+      <a href="https://wa.me/923293642275" target="_blank" class="flex items-center px-4 py-2 bg-green-500 hover:bg-green-400 text-white rounded-lg transition shadow-md hover:shadow-lg">
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.52 3.48A11.89 11.89 0 0 0 3.48 20.52l-1.06 3.87 3.98-1.05A11.88 11.88 0 0 0 20.52 3.48zM12 21a9 9 0 0 1-4.6-1.2l-.33-.2-2.65.7.7-2.6-.22-.34A9 9 0 1 1 12 21zm5.43-7.08c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.64.78-.78.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.44-1.34-1.68-.14-.24-.02-.36.1-.48.1-.1.24-.26.36-.38.12-.12.16-.22.24-.36.08-.14.04-.26-.02-.38-.06-.12-.54-1.3-.74-1.78-.2-.46-.4-.4-.54-.4-.14 0-.3-.02-.46-.02s-.38.06-.58.28c-.2.22-.78.76-.78 1.84s.8 2.14.92 2.3c.12.16 1.6 2.44 3.88 3.42.54.23.96.36 1.28.46.54.18 1.04.16 1.44.1.44-.06 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/>
+        </svg>
+        Message on WhatsApp
+      </a>
+
+      <!-- Website Follow -->
+<div class="flex flex-col md:flex-row items-center gap-2 mt-4">
+  <input id="emailInput" type="email" placeholder="Your email..." class="px-4 py-2 rounded-lg text-black" />
+  <button id="followBtn" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">
+    Follow
+  </button>
+</div>
+<p id="followerCount" class="mt-2 text-sm text-gray-300">Followers: 0</p>
+
+
+    </div>
+  </div>
+</footer>
+
+
+  <!-- ✅ JS -->
+<script>
+  // Set current year in footer
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Initialize AOS animations
+  AOS.init({ duration: 1000, once: true });
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  // ✅ Active link highlight (fixed)
+  const currentPage = document.body.getAttribute("data-page");
+  document.querySelectorAll(".nav-link").forEach(link => {
+    const href = link.getAttribute("href");
+
+    // Match Home and other pages properly
+    if (
+      (currentPage === "home" && href.includes("index.html")) ||
+      href.includes(currentPage)
+    ) {
+      link.classList.add("active");
+    }
+  });
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  set,
+  onValue,
+  query,
+  orderByChild,
+  equalTo,
+  get,
+  update
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+// 🔹 Firebase config (apna same config rakhna)
+const firebaseConfig = {
+  apiKey: "AIzaSyDIbWW0DYmPe-Di6qouH_M9G4sTJn054t4",
+  authDomain: "websitefollowers.firebaseapp.com",
+  databaseURL: "https://websitefollowers-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  projectId: "websitefollowers",
+  storageBucket: "websitefollowers.firebasestorage.app",
+  messagingSenderId: "549593567533",
+  appId: "1:549593567533:web:5c6cb522a507a727a843a4",
+  measurementId: "G-Y73B2GEMD3"
+};
+
+// 🔹 Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const auth = getAuth();
+
+// 🔹 Optional: anonymous auth so rules with auth != null also work
+signInAnonymously(auth).catch(err => {
+  // Don't block UX if anon sign-in fails, but log it
+  console.warn("Anonymous sign-in failed:", err);
+});
+
+// 🔹 Elements
+const followBtn = document.getElementById("followBtn");
+const emailInput = document.getElementById("emailInput");
+const followerCountEl = document.getElementById("followerCount");
+
+// 🔹 Helpers
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+function normalizeEmail(email) {
+  return email.trim().toLowerCase();
+}
+
+// 🔹 Follow button click -- with duplicate check
+followBtn.addEventListener("click", async () => {
+  const raw = emailInput.value || "";
+  const email = normalizeEmail(raw);
+
+  if (!isValidEmail(email)) {
+    alert("Please enter a valid email.");
+    return;
+  }
+
+  // Disable button while processing
+  followBtn.disabled = true;
+  followBtn.textContent = "Checking...";
+
+  try {
+    const followersRef = ref(db, "followers");
+    // Query for existing follower with same email
+    const q = query(followersRef, orderByChild("email"), equalTo(email));
+    const snap = await get(q);
+
+    if (snap.exists()) {
+      // Email already present
+      // Optionally update timestamp of that existing record
+      const data = snap.val();
+      const firstKey = Object.keys(data)[0];
+      const itemRef = ref(db, `followers/${firstKey}`);
+      await update(itemRef, { lastSeen: Date.now() }); // update timestamp (optional)
+
+      alert("You are already following — thanks!");
+    } else {
+      // Not found → create new follower
+      const newRef = push(followersRef);
+      await set(newRef, {
+        email: email,
+        createdAt: Date.now()
+      });
+      alert("Thanks for following!");
+      emailInput.value = "";
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong. Please try again.");
+  } finally {
+    followBtn.disabled = false;
+    followBtn.textContent = "Follow";
+  }
+});
+
+// 🔹 Realtime followers count
+const followersRefRealtime = ref(db, "followers");
+onValue(followersRefRealtime, (snapshot) => {
+  const data = snapshot.val();
+  const total = data ? Object.keys(data).length : 0;
+  followerCountEl.textContent = `Followers: ${total}`;
+});
+</script>
+
+<script>
+  const finxhareAd = document.getElementById("finxhare-ad");
+  const closeAdBtn = document.getElementById("closeAdBtn");
+
+  // Show ad after page load
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      finxhareAd.classList.remove("hidden");
+    }, 500); // 0.5s delay
+  });
+
+  // Close ad button
+  closeAdBtn.addEventListener("click", () => {
+    finxhareAd.classList.add("hidden");
+  });
+</script>
+
+
+
+
 
 </body>
 </html>

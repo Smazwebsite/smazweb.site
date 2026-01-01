@@ -1,4 +1,6 @@
-/* General Styles */
+/* =======================
+   General Styles
+======================= */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -7,13 +9,26 @@ body {
     color: white;
 }
 
-/* Navigation Bar */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* =======================
+   Navigation Bar
+======================= */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
     background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -32,45 +47,70 @@ nav ul li {
 }
 
 nav ul li a {
-    text-decoration: none;
     color: white;
     font-weight: 500;
     transition: 0.3s;
+    position: relative;
 }
 
-nav ul li a:hover {
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -4px;
+    background-color: #00a8ff;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a.active {
     color: #00a8ff;
+    font-weight: 600;
 }
 
-/* Header */
+nav ul li a.active::after {
+    width: 100%;
+}
+
+/* =======================
+   Header / Hero Section
+======================= */
 header {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
     text-align: center;
+    padding: 0 20px;
 }
 
-.header-content h1 {
+header h1 {
     font-size: 50px;
+    color: white;
 }
 
-.header-content span {
+header h1 span {
     color: #00a8ff;
 }
 
-.header-content p {
+header p {
     font-size: 18px;
     margin-top: 10px;
+    color: #d0d0d0;
 }
 
+/* Buttons */
 .btn {
     display: inline-block;
     margin-top: 20px;
     padding: 12px 25px;
     background: #00a8ff;
     color: white;
-    text-decoration: none;
     font-size: 18px;
     font-weight: bold;
     border-radius: 5px;
@@ -81,62 +121,9 @@ header {
     background: #007bb5;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #1a1a40, #0f4c75);
-    color: white;
-}
-
-/* Navigation Bar */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #00a8ff;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: #00a8ff;
-}
-
-/* About Section */
+/* =======================
+   About Section
+======================= */
 .about {
     text-align: center;
     padding: 80px 20px;
@@ -149,6 +136,7 @@ nav ul li a:hover {
     align-items: center;
     justify-content: center;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 .about-image img {
@@ -172,77 +160,12 @@ nav ul li a:hover {
     font-size: 18px;
     margin-top: 10px;
     line-height: 1.6;
+    color: #f0f0f0;
 }
 
-/* Buttons */
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    background: #00a8ff;
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #007bb5;
-}
-
-
-
-
-
-
-
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #1a1a40, #0f4c75);
-    color: white;
-}
-
-/* Navigation Bar */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #00a8ff;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: #00a8ff;
-}
-
-/* Services Section */
+/* =======================
+   Services Section
+======================= */
 .services {
     text-align: center;
     padding: 80px 20px;
@@ -275,20 +198,21 @@ nav ul li a:hover {
     height: 275px;
     width: 235px;
     text-align: center;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .service-box img {
-    width: 250px;  /* Increased width */
-    height: auto;  /* Maintain aspect ratio */
+    width: 250px;
+    height: auto;
     display: block;
-    margin: 0 auto 20px; /* Center the image and add spacing */
+    margin: 0 auto 20px;
     transition: transform 0.3s ease-in-out;
 }
 
 .service-box:hover img {
-    transform: scale(1.2); /* Slight zoom effect on hover */
+    transform: scale(1.2);
 }
+
 .service-box h2 {
     font-size: 24px;
     color: #00a8ff;
@@ -298,69 +222,17 @@ nav ul li a:hover {
 .service-box p {
     font-size: 16px;
     line-height: 1.5;
+    color: #f0f0f0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #1a1a40, #0f4c75);
-    color: white;
+.service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 168, 255, 0.3);
 }
 
-/* Navigation Bar */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #00a8ff;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: #00a8ff;
-}
-
-/* Portfolio Section */
+/* =======================
+   Portfolio Section
+======================= */
 .portfolio {
     text-align: center;
     padding: 80px 20px;
@@ -377,6 +249,7 @@ nav ul li a:hover {
     font-size: 18px;
     margin-bottom: 30px;
     line-height: 1.6;
+    color: #f0f0f0;
 }
 
 .portfolio-container {
@@ -392,17 +265,13 @@ nav ul li a:hover {
     border-radius: 10px;
     width: 300px;
     text-align: center;
-    transition: transform 0.3s;
-}
-
-.portfolio-item:hover {
-    transform: translateY(-10px);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .portfolio-item img {
     width: 100%;
-    border-radius: 10px;
     height: auto;
+    border-radius: 10px;
 }
 
 .portfolio-item h2 {
@@ -414,70 +283,17 @@ nav ul li a:hover {
 .portfolio-item p {
     font-size: 16px;
     line-height: 1.5;
+    color: #f0f0f0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #1a1a40, #0f4c75);
-    color: white;
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 168, 255, 0.3);
 }
 
-/* Navigation Bar */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #00a8ff;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: #00a8ff;
-}
-
-/* Contact Section */
+/* =======================
+   Contact Section
+======================= */
 .contact {
     text-align: center;
     padding: 80px 20px;
@@ -494,6 +310,7 @@ nav ul li a:hover {
     font-size: 18px;
     margin-bottom: 30px;
     line-height: 1.6;
+    color: #f0f0f0;
 }
 
 .contact-container {
@@ -507,6 +324,7 @@ nav ul li a:hover {
 .contact-info {
     font-size: 18px;
     line-height: 1.8;
+    color: #f0f0f0;
 }
 
 .contact-form {
@@ -517,7 +335,8 @@ nav ul li a:hover {
     text-align: center;
 }
 
-.contact-form input, .contact-form textarea {
+.contact-form input, 
+.contact-form textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -544,4 +363,64 @@ nav ul li a:hover {
 
 .contact-form button:hover {
     background: #0077cc;
+}
+
+/* =======================
+   FAQ Section
+======================= */
+.faq {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.faq-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 25px 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.faq-card h3 {
+    color: #00a8ff;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.faq-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #f0f0f0;
+}
+
+.faq-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 168, 255, 0.3);
+}
+
+/* =======================
+   Responsive
+======================= */
+@media (max-width: 768px) {
+    nav {
+        padding: 15px 20px;
+    }
+
+    header h1 {
+        font-size: 36px;
+    }
+
+    .service-container, 
+    .portfolio-container,
+    .about-container,
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .service-box,
+    .portfolio-item {
+        width: 90%;
+        margin-bottom: 20px;
+    }
 }

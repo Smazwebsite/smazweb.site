@@ -1,70 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Favicon / Website Logo -->
-<link rel="icon" type="image/png" href="wallpaper.png">
-<link rel="apple-touch-icon" href="wallpaper.png">
-<link rel="icon" sizes="192x192" href="wallpaper.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smaz — Professional Web & Design Services</title>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services – SMAZ-07</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="wallpaper.png">
+  <link rel="apple-touch-icon" href="wallpaper.png">
+
+  <!-- Tailwind & AOS -->
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(to right, #3b82f6, #60a5fa, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glass Card with Blue Glow */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass::after {
+      content: "";
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, rgba(37,99,235,0.6) 0%, transparent 70%);
+      transition: all 0.4s ease;
+      z-index: 0;
+    }
+
+    .glass:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(59,130,246,0.3);
+    }
+
+    .glass:hover::after {
+      width: 250%;
+      height: 250%;
+      bottom: -20%;
+    }
+
+    /* Navbar Links */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link.active {
+      color: #3b82f6;
+      font-weight: 600;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background-color: #3b82f6;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans" data-page="services">
   <!-- Navbar -->
-  <nav class="flex items-center justify-between px-6 py-4 bg-black/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800">
-    <h2 class="text-2xl font-extrabold tracking-wide text-blue-500">SMAZ-07</h2>
-    <ul class="hidden md:flex space-x-6 text-gray-300 font-medium">
-      <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
-      <li><a href="about.html" class="hover:text-blue-400">About</a></li>
-      <li><a href="services.html" class="text-blue-500 font-semibold">Services</a></li>
-      <li><a href="portfolio.html" class="hover:text-blue-400">Portfolio</a></li>
-      <li><a href="contact.html" class="hover:text-blue-400">Contact</a></li>
-    </ul>
-  </nav>
+<nav class="flex items-center justify-between px-6 sm:px-10 py-4 bg-black/70 backdrop-blur-lg sticky top-0 z-50 border-b border-gray-800">
+  <div class="flex items-center space-x-3">
+    <img src="wallpaper.png" alt="Smaz Logo" class="w-10 h-10 rounded">
+    <h2 class="text-2xl font-extrabold text-blue-500 tracking-wide">Smaz</h2>
+  </div>
+
+  <ul class="hidden md:flex space-x-8 text-gray-300 font-medium">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="services.html" class="nav-link active">Services</a></li>
+    <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+    <li>
+      <a href="apps.html" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white transition">Apps</a>
+    </li>
+  </ul>
+
+  <div class="md:hidden">
+    <button id="menu-btn" class="text-gray-300 text-2xl focus:outline-none" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<div id="mobile-menu" class="hidden md:hidden bg-black/90 backdrop-blur-lg border-t border-gray-700 px-6 pb-4 space-y-3">
+  <a href="index.html" class="block nav-link">Home</a>
+  <a href="about.html" class="block nav-link">About</a>
+  <a href="services.html" class="block nav-link active">Services</a>
+  <a href="portfolio.html" class="block nav-link">Portfolio</a>
+  <a href="contact.html" class="block nav-link">Contact</a>
+  <a href="apps.html" class="block px-5 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white text-center">Apps</a>
+</div>
 
   <!-- Hero Section -->
-  <header class="text-center px-6 py-16 bg-gradient-to-r from-gray-900 to-black">
-    <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-white">My <span class="text-blue-500">Services</span></h1>
-    <p class="max-w-2xl mx-auto text-gray-400 text-base md:text-lg leading-relaxed">
-      I offer professional web development services to bring your ideas to life.
+  <header class="text-center px-6 py-24 bg-gradient-to-br from-gray-900 to-black">
+    <h1 data-aos="fade-up" class="text-5xl font-extrabold mb-4 text-white">Our <span class="gradient-text">Services</span></h1>
+    <p data-aos="fade-up" data-aos-delay="200" class="max-w-2xl mx-auto text-gray-400 text-lg leading-relaxed">
+      We craft creative, high-performing websites and eye-catching visuals that empower brands to grow.
     </p>
   </header>
 
   <!-- Services Section -->
-  <section class="py-16 px-6">
+  <section class="py-20 px-6">
     <div class="max-w-6xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
       
-      <!-- Service Box -->
-      <div class="p-6 bg-gray-900/70 border border-gray-800 rounded-xl shadow-lg hover:shadow-blue-500/30 transition">
-        <img src="service1.jpg" alt="Web Design" class="rounded-lg mb-4">
-        <h2 class="text-xl font-semibold text-blue-400 mb-2">Web Design</h2>
-        <p class="text-gray-400">Creating stunning, responsive, and user-friendly website designs.</p>
+      <div data-aos="zoom-in" data-aos-delay="100" class="p-6 rounded-xl glass relative">
+        <img src="1.jpg" alt="Web Design" class="rounded-lg mb-4 relative z-10">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2 relative z-10">Web Design</h2>
+        <p class="text-gray-400 relative z-10">Beautiful, responsive website designs focused on creativity, usability, and brand personality.</p>
       </div>
 
-      <!-- Service Box -->
-      <div class="p-6 bg-gray-900/70 border border-gray-800 rounded-xl shadow-lg hover:shadow-blue-500/30 transition">
-        <img src="service5.jpg" alt="Web Development" class="rounded-lg mb-4">
-        <h2 class="text-xl font-semibold text-blue-400 mb-2">Web Development</h2>
-        <p class="text-gray-400">Developing high-performance and scalable websites using HTML, CSS, JavaScript, and more.</p>
+      <div data-aos="zoom-in" data-aos-delay="200" class="p-6 rounded-xl glass relative">
+        <img src="2.jpg" alt="Web Development" class="rounded-lg mb-4 relative z-10">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2 relative z-10">Web Development</h2>
+        <p class="text-gray-400 relative z-10">High-performance, secure, and scalable web apps using the latest modern tech stack.</p>
       </div>
 
-      <!-- Service Box -->
-      <div class="p-6 bg-gray-900/70 border border-gray-800 rounded-xl shadow-lg hover:shadow-blue-500/30 transition">
-        <img src="service3.jpg" alt="SEO Optimization" class="rounded-lg mb-4">
-        <h2 class="text-xl font-semibold text-blue-400 mb-2">SEO Optimization</h2>
-        <p class="text-gray-400">Enhancing website visibility with SEO best practices.</p>
+      <div data-aos="zoom-in" data-aos-delay="300" class="p-6 rounded-xl glass relative">
+        <img src="3.jpg" alt="SEO Optimization" class="rounded-lg mb-4 relative z-10">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2 relative z-10">SEO Optimization</h2>
+        <p class="text-gray-400 relative z-10">Boost visibility, attract traffic, and rank higher with powerful SEO strategies tailored to your site.</p>
       </div>
+
+      <div data-aos="zoom-in" data-aos-delay="400" class="p-6 rounded-xl glass relative">
+        <img src="4.jpg" alt="Graphic Design" class="rounded-lg mb-4 relative z-10">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2 relative z-10">Graphic Design</h2>
+        <p class="text-gray-400 relative z-10">Logos, posters, and social media designs that define your visual identity and attract attention.</p>
+      </div>
+
+      <div data-aos="zoom-in" data-aos-delay="500" class="p-6 rounded-xl glass relative">
+        <img src="5.jpg" alt="Poster & Deal Design" class="rounded-lg mb-4 relative z-10">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2 relative z-10">Poster & Deal Design</h2>
+        <p class="text-gray-400 relative z-10">Get high-impact promotional posters and creative deal graphics for your brand campaigns.</p>
+      </div>
+
+      <!--  
+      
+      <div data-aos="zoom-in" data-aos-delay="600" class="p-6 rounded-xl glass relative">
+        <img src="icon.png" alt="Lina Project" class="rounded-lg mb-4 relative z-10">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2 relative z-10">Lina Project</h2>
+        <p class="text-gray-400 relative z-10">Our biggest project yet — the upcoming all-in-one digital ecosystem powered by Smaz creativity.</p>
+      </div>   
+      
+      -->
 
     </div>
   </section>
 
+  <!-- CTA -->
+  <section class="text-center py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
+    <h2 data-aos="fade-up" class="text-4xl font-bold mb-6 gradient-text">Let’s Build Something Great</h2>
+    <p data-aos="fade-up" data-aos-delay="200" class="text-gray-400 max-w-2xl mx-auto mb-8">
+      Whether it's a full website, a rebrand, or digital posters — we’ll help your idea turn into a stunning digital experience.
+    </p>
+    <a data-aos="fade-up" data-aos-delay="400" href="contact.html" class="px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-semibold text-white shadow-lg transition transform hover:-translate-y-1">
+      Contact Us
+    </a>
+  </section>
+
   <!-- Footer -->
-  <footer class="bg-black text-gray-400 py-8 border-t border-gray-800 text-center">
-    <p>&copy; 2026 SMAZ-07. All rights reserved.</p>
-  </footer>
+<footer class="bg-black text-gray-300 py-8 border-t border-gray-800">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+    
+    <!-- Copyright -->
+    <p class="text-sm">&copy; <span id="year"></span> Smaz. All rights reserved.</p>
+    
+    <!-- Social Buttons -->
+    <div class="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-4">
+      
+      <!-- Facebook Follow -->
+      <a href="https://www.facebook.com/profile.php?id=61581496394306" target="_blank" class="flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition shadow-md hover:shadow-lg">
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22 12a10 10 0 1 0-11.5 9.87v-6.99H8v-2.88h2.5v-2.2c0-2.47 1.47-3.84 3.72-3.84 1.08 0 2.22.2 2.22.2v2.44h-1.25c-1.23 0-1.62.77-1.62 1.56v1.84h2.77l-.44 2.88h-2.33v6.99A10 10 0 0 0 22 12z"/>
+        </svg>
+        Follow on Facebook
+      </a>
+
+      <!-- WhatsApp Message -->
+      <a href="https://wa.me/923293642275" target="_blank" class="flex items-center px-4 py-2 bg-green-500 hover:bg-green-400 text-white rounded-lg transition shadow-md hover:shadow-lg">
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.52 3.48A11.89 11.89 0 0 0 3.48 20.52l-1.06 3.87 3.98-1.05A11.88 11.88 0 0 0 20.52 3.48zM12 21a9 9 0 0 1-4.6-1.2l-.33-.2-2.65.7.7-2.6-.22-.34A9 9 0 1 1 12 21zm5.43-7.08c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.64.78-.78.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.44-1.34-1.68-.14-.24-.02-.36.1-.48.1-.1.24-.26.36-.38.12-.12.16-.22.24-.36.08-.14.04-.26-.02-.38-.06-.12-.54-1.3-.74-1.78-.2-.46-.4-.4-.54-.4-.14 0-.3-.02-.46-.02s-.38.06-.58.28c-.2.22-.78.76-.78 1.84s.8 2.14.92 2.3c.12.16 1.6 2.44 3.88 3.42.54.23.96.36 1.28.46.54.18 1.04.16 1.44.1.44-.06 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/>
+        </svg>
+        Message on WhatsApp
+      </a>
+
+      <!-- Website Follow -->
+<div class="flex flex-col md:flex-row items-center gap-2 mt-4">
+  <input id="emailInput" type="email" placeholder="Your email..." class="px-4 py-2 rounded-lg text-black" />
+  <button id="followBtn" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">
+    Follow
+  </button>
+</div>
+<p id="followerCount" class="mt-2 text-sm text-gray-300">Followers: 0</p>
+
+
+    </div>
+  </div>
+</footer>
+
+
+  <script>
+  // -----------------------------
+  // Footer: Set current year
+  // -----------------------------
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // -----------------------------
+  // Initialize AOS animations
+  // -----------------------------
+  if (typeof AOS !== "undefined") {
+    AOS.init({ duration: 1000, once: true });
+  }
+
+  // -----------------------------
+  // Mobile menu toggle
+  // -----------------------------
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+
+  // -----------------------------
+  // Active link highlight (desktop + mobile)
+  // -----------------------------
+  const currentPage = document.body.getAttribute("data-page"); // home/about/services/portfolio/faq/etc.
+  if (currentPage) {
+    document.querySelectorAll(".nav-link").forEach(link => {
+      const href = link.getAttribute("href");
+      if (
+        (currentPage === "services" && href.includes("services.html")) ||
+        href.includes(currentPage)
+      ) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  }
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  set,
+  onValue,
+  query,
+  orderByChild,
+  equalTo,
+  get,
+  update
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+// 🔹 Firebase config (apna same config rakhna)
+const firebaseConfig = {
+  apiKey: "AIzaSyDIbWW0DYmPe-Di6qouH_M9G4sTJn054t4",
+  authDomain: "websitefollowers.firebaseapp.com",
+  databaseURL: "https://websitefollowers-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  projectId: "websitefollowers",
+  storageBucket: "websitefollowers.firebasestorage.app",
+  messagingSenderId: "549593567533",
+  appId: "1:549593567533:web:5c6cb522a507a727a843a4",
+  measurementId: "G-Y73B2GEMD3"
+};
+
+// 🔹 Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const auth = getAuth();
+
+// 🔹 Optional: anonymous auth so rules with auth != null also work
+signInAnonymously(auth).catch(err => {
+  // Don't block UX if anon sign-in fails, but log it
+  console.warn("Anonymous sign-in failed:", err);
+});
+
+// 🔹 Elements
+const followBtn = document.getElementById("followBtn");
+const emailInput = document.getElementById("emailInput");
+const followerCountEl = document.getElementById("followerCount");
+
+// 🔹 Helpers
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+function normalizeEmail(email) {
+  return email.trim().toLowerCase();
+}
+
+// 🔹 Follow button click -- with duplicate check
+followBtn.addEventListener("click", async () => {
+  const raw = emailInput.value || "";
+  const email = normalizeEmail(raw);
+
+  if (!isValidEmail(email)) {
+    alert("Please enter a valid email.");
+    return;
+  }
+
+  // Disable button while processing
+  followBtn.disabled = true;
+  followBtn.textContent = "Checking...";
+
+  try {
+    const followersRef = ref(db, "followers");
+    // Query for existing follower with same email
+    const q = query(followersRef, orderByChild("email"), equalTo(email));
+    const snap = await get(q);
+
+    if (snap.exists()) {
+      // Email already present
+      // Optionally update timestamp of that existing record
+      const data = snap.val();
+      const firstKey = Object.keys(data)[0];
+      const itemRef = ref(db, `followers/${firstKey}`);
+      await update(itemRef, { lastSeen: Date.now() }); // update timestamp (optional)
+
+      alert("You are already following — thanks!");
+    } else {
+      // Not found → create new follower
+      const newRef = push(followersRef);
+      await set(newRef, {
+        email: email,
+        createdAt: Date.now()
+      });
+      alert("Thanks for following!");
+      emailInput.value = "";
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong. Please try again.");
+  } finally {
+    followBtn.disabled = false;
+    followBtn.textContent = "Follow";
+  }
+});
+
+// 🔹 Realtime followers count
+const followersRefRealtime = ref(db, "followers");
+onValue(followersRefRealtime, (snapshot) => {
+  const data = snapshot.val();
+  const total = data ? Object.keys(data).length : 0;
+  followerCountEl.textContent = `Followers: ${total}`;
+});
+</script>
 
 </body>
 </html>

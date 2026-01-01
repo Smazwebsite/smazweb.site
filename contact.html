@@ -1,120 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Favicon / Website Logo -->
-<link rel="icon" type="image/png" href="wallpaper.png">
-<link rel="apple-touch-icon" href="wallpaper.png">
-<link rel="icon" sizes="192x192" href="wallpaper.png">
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact – Smaz</title>
-  <meta name="description" content="Get in touch with Smaz – for support, business inquiries, or partnerships. Contact us via email, form, or social links.">
+  <title>Contact — Smaz</title>
+  <meta name="description" content="Get in touch with Smaz — professional web design, development, and creative graphics team. Let's bring your ideas to life.">
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="wallpaper.png">
+  <link rel="apple-touch-icon" href="wallpaper.png">
+
+  <!-- ✅ Tailwind + AOS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(to right, #3b82f6, #60a5fa, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Navbar Links */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link.active {
+      color: #3b82f6;
+      font-weight: 600;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background-color: #3b82f6;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Glass Container */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+    }
+    .glass:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(59,130,246,0.3);
+    }
+  </style>
 </head>
+
 <body class="bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 font-sans" data-page="contact">
 
-  <!-- Navbar -->
-  <nav class="flex items-center justify-between px-6 md:px-8 py-4 bg-black/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800">
+  <!-- ✅ Navbar -->
+  <nav class="flex items-center justify-between px-6 md:px-10 py-4 bg-black/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-800">
     <div class="flex items-center space-x-3">
       <img src="wallpaper.png" alt="Smaz Logo" class="w-10 h-10 rounded">
       <h2 class="text-2xl font-extrabold tracking-wide text-blue-500">Smaz</h2>
     </div>
-    <!-- Desktop Menu -->
-    <ul class="hidden md:flex space-x-6 text-gray-300 font-medium">
-      <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
-      <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
-      <li><a href="features.html" class="nav-link" data-page="features">Features</a></li>
-      <li><a href="portfolio.html" class="nav-link" data-page="portfolio">Portfolio</a></li>
-      <li><a href="blog.html" class="nav-link" data-page="blog">Blog</a></li>
-      <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
-      <li><a href="privacy.html" class="nav-link" data-page="privacy">Privacy</a></li>
+
+    <ul class="hidden md:flex space-x-8 text-gray-300 font-medium">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+      <li><a href="contact.html" class="nav-link active">Contact</a></li>
       <li>
-        <a href="lina.html" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold transition">
-          Explore Lina
-        </a>
+        <a href="apps.html" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold text-white transition">Apps</a>
       </li>
     </ul>
-    <!-- Mobile Menu Button -->
+
+    <!-- Mobile Menu -->
     <button id="menu-btn" class="md:hidden text-gray-300 focus:outline-none text-2xl">☰</button>
   </nav>
 
-  <!-- Mobile Dropdown -->
   <div id="mobile-menu" class="hidden md:hidden flex-col bg-black/90 text-gray-300 font-medium px-6 py-4 space-y-4">
-    <a href="index.html" class="nav-link block" data-page="home">Home</a>
-    <a href="about.html" class="nav-link block" data-page="about">About</a>
-    <a href="features.html" class="nav-link block" data-page="features">Features</a>
-    <a href="portfolio.html" class="nav-link block" data-page="portfolio">Portfolio</a>
-    <a href="blog.html" class="nav-link block" data-page="blog">Blog</a>
-    <a href="contact.html" class="nav-link block" data-page="contact">Contact</a>
-    <a href="privacy.html" class="nav-link block" data-page="privacy">Privacy</a>
-    <a href="lina.html" class="block px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold transition text-center">
-      Explore Lina
+    <a href="index.html" class="nav-link block">Home</a>
+    <a href="about.html" class="nav-link block">About</a>
+    <a href="services.html" class="nav-link block">Services</a>
+    <a href="portfolio.html" class="nav-link block">Portfolio</a>
+    <a href="contact.html" class="nav-link block active">Contact</a>
+    <a href="apps.html" class="block px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold transition text-center">
+      Apps
     </a>
   </div>
 
-  <!-- Active Link Script -->
-  <script>
-    const activePage = document.body.getAttribute('data-page');
-    document.querySelectorAll('.nav-link').forEach(link => {
-      if(link.dataset.page === activePage){
-        link.classList.add('text-blue-500', 'font-semibold');
-      } else {
-        link.classList.remove('text-blue-500', 'font-semibold');
-      }
-    });
-
-    // Mobile Menu Toggle
-    document.getElementById("menu-btn").addEventListener("click", () => {
-      document.getElementById("mobile-menu").classList.toggle("hidden");
-    });
-  </script>
-
-  <!-- Contact Header -->
-  <header class="text-center py-16 px-6">
-    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4">Get in Touch</h1>
-    <p class="text-gray-400 max-w-2xl mx-auto text-base md:text-lg">
-      Have questions, feedback, or partnership inquiries?  
-      We’d love to hear from you – let’s connect.
+  <!-- ✅ Hero Section -->
+  <header class="text-center px-6 py-24 bg-gradient-to-br from-gray-900 to-black">
+    <h1 data-aos="fade-up" class="text-5xl md:text-6xl font-extrabold mb-4 text-white">Let’s <span class="gradient-text">Connect</span></h1>
+    <p data-aos="fade-up" data-aos-delay="200" class="max-w-2xl mx-auto text-gray-400 text-lg leading-relaxed">
+      Whether you want a website, poster, or a complete brand design — Smaz is here to bring your vision to life.
     </p>
   </header>
 
-  <!-- Contact Form -->
-  <section class="max-w-3xl mx-auto px-6 md:px-8 py-12 bg-gray-900/70 rounded-xl shadow-lg border border-gray-800">
-    <form action="https://formspree.io/f/mjkarogv" method="POST" class="space-y-6"> 
-      <div>
-        <label class="block text-gray-300 mb-2">Name</label>
-        <input type="text" name="name" class="w-full px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" required>
-      </div>
-      <div>
-        <label class="block text-gray-300 mb-2">Email</label>
-        <input type="email" name="email" class="w-full px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" required>
-      </div>
-      <div>
-        <label class="block text-gray-300 mb-2">Message</label>
-        <textarea name="message" rows="5" class="w-full px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" required></textarea>
-      </div>
-      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 transition text-white font-bold py-3 rounded-lg">Send Message</button>
-    </form>
+  <!-- ✅ Contact Form -->
+  <section class="py-20 px-6">
+    <div data-aos="fade-up" class="max-w-4xl mx-auto p-8 rounded-2xl glass">
+      <h2 class="text-3xl font-bold mb-6 text-blue-400 text-center">Send Us a Message</h2>
+      <form action="https://formspree.io/f/mjkarogv" method="POST" class="space-y-6">
+        <div>
+          <label class="block text-gray-300 mb-2">Your Name</label>
+          <input type="text" name="name" placeholder="Mr Abuzar" class="w-full px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div>
+          <label class="block text-gray-300 mb-2">Email Address</label>
+          <input type="email" name="email" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div>
+          <label class="block text-gray-300 mb-2">Message</label>
+          <textarea name="message" rows="5" placeholder="Write your message..." class="w-full px-4 py-3 rounded-lg bg-black border border-gray-700 text-white focus:ring-2 focus:ring-blue-500" required></textarea>
+        </div>
+        <button type="submit" class="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-500 font-semibold text-white transition transform hover:-translate-y-1 shadow-lg">
+          Send Message
+        </button>
+      </form>
+    </div>
   </section>
 
-  <!-- Contact Info -->
-  <section class="text-center py-12 px-6 space-y-4">
-    <p>Email: <a href="mailto:info@smazweb.site" class="text-blue-400 hover:underline">info@smazweb.site</a></p>
-    <p>
-      Follow us: 
-      <a href="https://wa.me/923293642275" target="_blank" class="text-blue-400 mx-2 hover:underline">WhatsApp (+92 329 3642275)</a>
-    </p>
-    <p class="text-gray-500 text-sm">
-      Need quick help? Visit our 
-      <a href="faq.html" class="text-blue-400 hover:underline">FAQ</a>.
-    </p>
+  <!-- ✅ Contact Info -->
+  <section class="text-center py-16 px-6 bg-gradient-to-b from-gray-900 to-black border-t border-gray-800">
+    <div data-aos="fade-up" class="space-y-6">
+      <h3 class="text-2xl font-semibold gradient-text">Contact Details</h3>
+      <p>Email: <a href="mailto:info@smazweb.site" class="text-blue-400 hover:underline">info@smazweb.site</a></p>
+      <p>WhatsApp: <a href="https://wa.me/923293642275" target="_blank" class="text-blue-400 hover:underline">+92 329 3642275</a></p>
+      <p class="text-gray-400 text-sm">Need quick help? Visit our <a href="faq.html" class="text-blue-400 hover:underline">FAQ Page</a>.</p>
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black text-gray-400 py-8 border-t border-gray-800 text-center px-4">
-    <p>&copy; 2026 Smaz. All Rights Reserved.</p>
-  </footer>
+<footer class="bg-black text-gray-300 py-8 border-t border-gray-800">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+    
+    <!-- Copyright -->
+    <p class="text-sm">&copy; <span id="year"></span> Smaz. All rights reserved.</p>
+    
+    <!-- Social Buttons -->
+    <div class="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-4">
+      
+      <!-- Facebook Follow -->
+      <a href="https://www.facebook.com/profile.php?id=61581496394306" target="_blank" class="flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition shadow-md hover:shadow-lg">
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22 12a10 10 0 1 0-11.5 9.87v-6.99H8v-2.88h2.5v-2.2c0-2.47 1.47-3.84 3.72-3.84 1.08 0 2.22.2 2.22.2v2.44h-1.25c-1.23 0-1.62.77-1.62 1.56v1.84h2.77l-.44 2.88h-2.33v6.99A10 10 0 0 0 22 12z"/>
+        </svg>
+        Follow on Facebook
+      </a>
+
+      <!-- WhatsApp Message -->
+      <a href="https://wa.me/923293642275" target="_blank" class="flex items-center px-4 py-2 bg-green-500 hover:bg-green-400 text-white rounded-lg transition shadow-md hover:shadow-lg">
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.52 3.48A11.89 11.89 0 0 0 3.48 20.52l-1.06 3.87 3.98-1.05A11.88 11.88 0 0 0 20.52 3.48zM12 21a9 9 0 0 1-4.6-1.2l-.33-.2-2.65.7.7-2.6-.22-.34A9 9 0 1 1 12 21zm5.43-7.08c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.64.78-.78.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.44-1.34-1.68-.14-.24-.02-.36.1-.48.1-.1.24-.26.36-.38.12-.12.16-.22.24-.36.08-.14.04-.26-.02-.38-.06-.12-.54-1.3-.74-1.78-.2-.46-.4-.4-.54-.4-.14 0-.3-.02-.46-.02s-.38.06-.58.28c-.2.22-.78.76-.78 1.84s.8 2.14.92 2.3c.12.16 1.6 2.44 3.88 3.42.54.23.96.36 1.28.46.54.18 1.04.16 1.44.1.44-.06 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/>
+        </svg>
+        Message on WhatsApp
+      </a>
+
+      <!-- Website Follow -->
+<div class="flex flex-col md:flex-row items-center gap-2 mt-4">
+  <input id="emailInput" type="email" placeholder="Your email..." class="px-4 py-2 rounded-lg text-black" />
+  <button id="followBtn" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg">
+    Follow
+  </button>
+</div>
+<p id="followerCount" class="mt-2 text-sm text-gray-300">Followers: 0</p>
+
+
+    </div>
+  </div>
+  
+</footer>
+
+  <!-- ✅ JS -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    AOS.init({ duration: 1000, once: true });
+
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Active Link Highlight
+    const currentPage = document.body.getAttribute("data-page");
+    document.querySelectorAll(".nav-link").forEach(link => {
+      if (link.getAttribute("href").includes(currentPage)) {
+        link.classList.add("active");
+      }
+    });
+  </script>
+
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  set,
+  onValue,
+  query,
+  orderByChild,
+  equalTo,
+  get,
+  update
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+// 🔹 Firebase config (apna same config rakhna)
+const firebaseConfig = {
+  apiKey: "AIzaSyDIbWW0DYmPe-Di6qouH_M9G4sTJn054t4",
+  authDomain: "websitefollowers.firebaseapp.com",
+  databaseURL: "https://websitefollowers-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  projectId: "websitefollowers",
+  storageBucket: "websitefollowers.firebasestorage.app",
+  messagingSenderId: "549593567533",
+  appId: "1:549593567533:web:5c6cb522a507a727a843a4",
+  measurementId: "G-Y73B2GEMD3"
+};
+
+// 🔹 Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const auth = getAuth();
+
+// 🔹 Optional: anonymous auth so rules with auth != null also work
+signInAnonymously(auth).catch(err => {
+  // Don't block UX if anon sign-in fails, but log it
+  console.warn("Anonymous sign-in failed:", err);
+});
+
+// 🔹 Elements
+const followBtn = document.getElementById("followBtn");
+const emailInput = document.getElementById("emailInput");
+const followerCountEl = document.getElementById("followerCount");
+
+// 🔹 Helpers
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+function normalizeEmail(email) {
+  return email.trim().toLowerCase();
+}
+
+// 🔹 Follow button click -- with duplicate check
+followBtn.addEventListener("click", async () => {
+  const raw = emailInput.value || "";
+  const email = normalizeEmail(raw);
+
+  if (!isValidEmail(email)) {
+    alert("Please enter a valid email.");
+    return;
+  }
+
+  // Disable button while processing
+  followBtn.disabled = true;
+  followBtn.textContent = "Checking...";
+
+  try {
+    const followersRef = ref(db, "followers");
+    // Query for existing follower with same email
+    const q = query(followersRef, orderByChild("email"), equalTo(email));
+    const snap = await get(q);
+
+    if (snap.exists()) {
+      // Email already present
+      // Optionally update timestamp of that existing record
+      const data = snap.val();
+      const firstKey = Object.keys(data)[0];
+      const itemRef = ref(db, `followers/${firstKey}`);
+      await update(itemRef, { lastSeen: Date.now() }); // update timestamp (optional)
+
+      alert("You are already following — thanks!");
+    } else {
+      // Not found → create new follower
+      const newRef = push(followersRef);
+      await set(newRef, {
+        email: email,
+        createdAt: Date.now()
+      });
+      alert("Thanks for following!");
+      emailInput.value = "";
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong. Please try again.");
+  } finally {
+    followBtn.disabled = false;
+    followBtn.textContent = "Follow";
+  }
+});
+
+// 🔹 Realtime followers count
+const followersRefRealtime = ref(db, "followers");
+onValue(followersRefRealtime, (snapshot) => {
+  const data = snapshot.val();
+  const total = data ? Object.keys(data).length : 0;
+  followerCountEl.textContent = `Followers: ${total}`;
+});
+</script>
 
 </body>
 </html>
